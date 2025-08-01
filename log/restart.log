@@ -1,0 +1,704 @@
+[2025-07-27 21:23:55] Restarting AlphaTango service...
+[2025-07-27 21:23:55] Restart complete. Status: active
+
+📜 Recent Logs:
+Jul 27 21:23:28 vmi2703391 systemd[1]: alphatango.service: Scheduled restart job, restart counter is at 34.
+Jul 27 21:23:28 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 27 21:23:28 vmi2703391 systemd[1]: alphatango.service: Consumed 3.563s CPU time.
+Jul 27 21:23:28 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 27 21:23:32 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=exited, status=1/FAILURE
+Jul 27 21:23:32 vmi2703391 systemd[1]: alphatango.service: Failed with result 'exit-code'.
+Jul 27 21:23:32 vmi2703391 systemd[1]: alphatango.service: Consumed 3.645s CPU time.
+Jul 27 21:23:42 vmi2703391 systemd[1]: alphatango.service: Scheduled restart job, restart counter is at 35.
+Jul 27 21:23:42 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 27 21:23:42 vmi2703391 systemd[1]: alphatango.service: Consumed 3.645s CPU time.
+Jul 27 21:23:42 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 27 21:23:45 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=exited, status=1/FAILURE
+Jul 27 21:23:45 vmi2703391 systemd[1]: alphatango.service: Failed with result 'exit-code'.
+Jul 27 21:23:45 vmi2703391 systemd[1]: alphatango.service: Consumed 3.590s CPU time.
+Jul 27 21:23:55 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 27 21:23:55 vmi2703391 systemd[1]: alphatango.service: Consumed 3.590s CPU time.
+Jul 27 21:23:55 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 27 21:23:59 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=exited, status=1/FAILURE
+Jul 27 21:23:59 vmi2703391 systemd[1]: alphatango.service: Failed with result 'exit-code'.
+Jul 27 21:23:59 vmi2703391 systemd[1]: alphatango.service: Consumed 3.451s CPU time.
+[2025-07-27 21:36:19] Restarting AlphaTango service...
+[2025-07-27 21:36:19] Restart complete. Status: active
+
+📜 Recent Logs:
+Jul 27 21:35:46 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=exited, status=1/FAILURE
+Jul 27 21:35:46 vmi2703391 systemd[1]: alphatango.service: Failed with result 'exit-code'.
+Jul 27 21:35:46 vmi2703391 systemd[1]: alphatango.service: Consumed 3.486s CPU time.
+Jul 27 21:35:56 vmi2703391 systemd[1]: alphatango.service: Scheduled restart job, restart counter is at 85.
+Jul 27 21:35:56 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 27 21:35:56 vmi2703391 systemd[1]: alphatango.service: Consumed 3.486s CPU time.
+Jul 27 21:35:56 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 27 21:36:00 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=exited, status=1/FAILURE
+Jul 27 21:36:00 vmi2703391 systemd[1]: alphatango.service: Failed with result 'exit-code'.
+Jul 27 21:36:00 vmi2703391 systemd[1]: alphatango.service: Consumed 3.657s CPU time.
+Jul 27 21:36:10 vmi2703391 systemd[1]: alphatango.service: Scheduled restart job, restart counter is at 86.
+Jul 27 21:36:10 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 27 21:36:10 vmi2703391 systemd[1]: alphatango.service: Consumed 3.657s CPU time.
+Jul 27 21:36:10 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 27 21:36:14 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=exited, status=1/FAILURE
+Jul 27 21:36:14 vmi2703391 systemd[1]: alphatango.service: Failed with result 'exit-code'.
+Jul 27 21:36:14 vmi2703391 systemd[1]: alphatango.service: Consumed 3.533s CPU time.
+Jul 27 21:36:19 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 27 21:36:19 vmi2703391 systemd[1]: alphatango.service: Consumed 3.533s CPU time.
+Jul 27 21:36:19 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+[2025-07-27 22:27:42] Restarting AlphaTango service...
+[2025-07-27 22:27:42] Restart complete. Status: active
+
+📜 Recent Logs:
+Jul 27 22:27:12 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=exited, status=1/FAILURE
+Jul 27 22:27:12 vmi2703391 systemd[1]: alphatango.service: Failed with result 'exit-code'.
+Jul 27 22:27:12 vmi2703391 systemd[1]: alphatango.service: Consumed 3.149s CPU time.
+Jul 27 22:27:22 vmi2703391 systemd[1]: alphatango.service: Scheduled restart job, restart counter is at 51.
+Jul 27 22:27:22 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 27 22:27:22 vmi2703391 systemd[1]: alphatango.service: Consumed 3.149s CPU time.
+Jul 27 22:27:22 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 27 22:27:26 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=exited, status=1/FAILURE
+Jul 27 22:27:26 vmi2703391 systemd[1]: alphatango.service: Failed with result 'exit-code'.
+Jul 27 22:27:26 vmi2703391 systemd[1]: alphatango.service: Consumed 3.534s CPU time.
+Jul 27 22:27:36 vmi2703391 systemd[1]: alphatango.service: Scheduled restart job, restart counter is at 52.
+Jul 27 22:27:36 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 27 22:27:36 vmi2703391 systemd[1]: alphatango.service: Consumed 3.534s CPU time.
+Jul 27 22:27:36 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 27 22:27:40 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=exited, status=1/FAILURE
+Jul 27 22:27:40 vmi2703391 systemd[1]: alphatango.service: Failed with result 'exit-code'.
+Jul 27 22:27:40 vmi2703391 systemd[1]: alphatango.service: Consumed 3.546s CPU time.
+Jul 27 22:27:42 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 27 22:27:42 vmi2703391 systemd[1]: alphatango.service: Consumed 3.546s CPU time.
+Jul 27 22:27:42 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+[2025-07-27 22:47:44] Restarting AlphaTango service...
+[2025-07-27 22:47:44] Restart complete. Status: active
+
+📜 Recent Logs:
+Jul 27 22:47:16 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 27 22:47:19 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=exited, status=1/FAILURE
+Jul 27 22:47:19 vmi2703391 systemd[1]: alphatango.service: Failed with result 'exit-code'.
+Jul 27 22:47:19 vmi2703391 systemd[1]: alphatango.service: Consumed 3.260s CPU time.
+Jul 27 22:47:30 vmi2703391 systemd[1]: alphatango.service: Scheduled restart job, restart counter is at 11.
+Jul 27 22:47:30 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 27 22:47:30 vmi2703391 systemd[1]: alphatango.service: Consumed 3.260s CPU time.
+Jul 27 22:47:30 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 27 22:47:33 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=exited, status=1/FAILURE
+Jul 27 22:47:33 vmi2703391 systemd[1]: alphatango.service: Failed with result 'exit-code'.
+Jul 27 22:47:33 vmi2703391 systemd[1]: alphatango.service: Consumed 3.123s CPU time.
+Jul 27 22:47:43 vmi2703391 systemd[1]: alphatango.service: Scheduled restart job, restart counter is at 12.
+Jul 27 22:47:43 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 27 22:47:43 vmi2703391 systemd[1]: alphatango.service: Consumed 3.123s CPU time.
+Jul 27 22:47:43 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 27 22:47:44 vmi2703391 systemd[1]: Stopping AlphaTango Arbitrage Bot...
+Jul 27 22:47:44 vmi2703391 systemd[1]: alphatango.service: Deactivated successfully.
+Jul 27 22:47:44 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 27 22:47:44 vmi2703391 systemd[1]: alphatango.service: Consumed 1.386s CPU time.
+Jul 27 22:47:44 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+[2025-07-27 22:57:24] Restarting AlphaTango service...
+[2025-07-27 22:57:24] Restart complete. Status: active
+
+📜 Recent Logs:
+Jul 27 22:56:52 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=exited, status=1/FAILURE
+Jul 27 22:56:52 vmi2703391 systemd[1]: alphatango.service: Failed with result 'exit-code'.
+Jul 27 22:56:52 vmi2703391 systemd[1]: alphatango.service: Consumed 3.207s CPU time.
+Jul 27 22:57:02 vmi2703391 systemd[1]: alphatango.service: Scheduled restart job, restart counter is at 40.
+Jul 27 22:57:02 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 27 22:57:02 vmi2703391 systemd[1]: alphatango.service: Consumed 3.207s CPU time.
+Jul 27 22:57:02 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 27 22:57:06 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=exited, status=1/FAILURE
+Jul 27 22:57:06 vmi2703391 systemd[1]: alphatango.service: Failed with result 'exit-code'.
+Jul 27 22:57:06 vmi2703391 systemd[1]: alphatango.service: Consumed 3.493s CPU time.
+Jul 27 22:57:16 vmi2703391 systemd[1]: alphatango.service: Scheduled restart job, restart counter is at 41.
+Jul 27 22:57:16 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 27 22:57:16 vmi2703391 systemd[1]: alphatango.service: Consumed 3.493s CPU time.
+Jul 27 22:57:16 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 27 22:57:20 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=exited, status=1/FAILURE
+Jul 27 22:57:20 vmi2703391 systemd[1]: alphatango.service: Failed with result 'exit-code'.
+Jul 27 22:57:20 vmi2703391 systemd[1]: alphatango.service: Consumed 3.449s CPU time.
+Jul 27 22:57:24 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 27 22:57:24 vmi2703391 systemd[1]: alphatango.service: Consumed 3.449s CPU time.
+Jul 27 22:57:24 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+[2025-07-27 23:02:28] Restarting AlphaTango service...
+[2025-07-27 23:02:28] Restart complete. Status: active
+
+📜 Recent Logs:
+Jul 27 23:01:57 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=exited, status=1/FAILURE
+Jul 27 23:01:57 vmi2703391 systemd[1]: alphatango.service: Failed with result 'exit-code'.
+Jul 27 23:01:57 vmi2703391 systemd[1]: alphatango.service: Consumed 3.381s CPU time.
+Jul 27 23:02:08 vmi2703391 systemd[1]: alphatango.service: Scheduled restart job, restart counter is at 61.
+Jul 27 23:02:08 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 27 23:02:08 vmi2703391 systemd[1]: alphatango.service: Consumed 3.381s CPU time.
+Jul 27 23:02:08 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 27 23:02:11 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=exited, status=1/FAILURE
+Jul 27 23:02:11 vmi2703391 systemd[1]: alphatango.service: Failed with result 'exit-code'.
+Jul 27 23:02:11 vmi2703391 systemd[1]: alphatango.service: Consumed 3.325s CPU time.
+Jul 27 23:02:21 vmi2703391 systemd[1]: alphatango.service: Scheduled restart job, restart counter is at 62.
+Jul 27 23:02:21 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 27 23:02:21 vmi2703391 systemd[1]: alphatango.service: Consumed 3.325s CPU time.
+Jul 27 23:02:21 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 27 23:02:24 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=exited, status=1/FAILURE
+Jul 27 23:02:24 vmi2703391 systemd[1]: alphatango.service: Failed with result 'exit-code'.
+Jul 27 23:02:24 vmi2703391 systemd[1]: alphatango.service: Consumed 3.179s CPU time.
+Jul 27 23:02:28 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 27 23:02:28 vmi2703391 systemd[1]: alphatango.service: Consumed 3.179s CPU time.
+Jul 27 23:02:28 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+[2025-07-28 09:31:14] Restarting AlphaTango service...
+[2025-07-28 09:31:14] Restart complete. Status: active
+
+📜 Recent Logs:
+Jul 28 09:03:05 vmi2703391 systemd[1]: alphatango.service: Scheduled restart job, restart counter is at 76.
+Jul 28 09:03:05 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 28 09:03:05 vmi2703391 systemd[1]: alphatango.service: Consumed 3.638s CPU time.
+Jul 28 09:03:05 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 28 09:03:09 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=exited, status=1/FAILURE
+Jul 28 09:03:09 vmi2703391 systemd[1]: alphatango.service: Failed with result 'exit-code'.
+Jul 28 09:03:09 vmi2703391 systemd[1]: alphatango.service: Consumed 3.816s CPU time.
+Jul 28 09:03:19 vmi2703391 systemd[1]: alphatango.service: Scheduled restart job, restart counter is at 77.
+Jul 28 09:03:19 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 28 09:03:19 vmi2703391 systemd[1]: alphatango.service: Consumed 3.816s CPU time.
+Jul 28 09:03:19 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 28 09:30:35 vmi2703391 systemd[1]: Stopping AlphaTango Arbitrage Bot...
+Jul 28 09:32:06 vmi2703391 systemd[1]: alphatango.service: State 'stop-sigterm' timed out. Killing.
+Jul 28 09:32:06 vmi2703391 systemd[1]: alphatango.service: Killing process 39778 (python3) with signal SIGKILL.
+Jul 28 09:32:06 vmi2703391 systemd[1]: alphatango.service: Killing process 39780 (python3) with signal SIGKILL.
+Jul 28 09:32:06 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=killed, status=9/KILL
+Jul 28 09:32:06 vmi2703391 systemd[1]: alphatango.service: Failed with result 'timeout'.
+Jul 28 09:32:06 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 28 09:32:06 vmi2703391 systemd[1]: alphatango.service: Consumed 1min 45.112s CPU time.
+Jul 28 09:32:06 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+[2025-07-28 10:28:45] Restarting AlphaTango service...
+[2025-07-28 13:07:38] Restarting AlphaTango service...
+[2025-07-28 13:07:38] Restart complete. Status: deactivating
+
+📜 Recent Logs:
+Jul 28 13:00:30 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 28 13:00:30 vmi2703391 systemd[1]: alphatango.service: Consumed 11.780s CPU time.
+Jul 28 13:00:30 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 28 13:03:42 vmi2703391 systemd[1]: Stopping AlphaTango Arbitrage Bot...
+Jul 28 13:04:42 vmi2703391 systemd[1]: alphatango.service: State 'stop-sigterm' timed out. Killing.
+Jul 28 13:04:42 vmi2703391 systemd[1]: alphatango.service: Killing process 4495 (python3) with signal SIGKILL.
+Jul 28 13:04:42 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=killed, status=9/KILL
+Jul 28 13:04:42 vmi2703391 systemd[1]: alphatango.service: Failed with result 'timeout'.
+Jul 28 13:04:42 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 28 13:04:42 vmi2703391 systemd[1]: alphatango.service: Consumed 30.202s CPU time.
+Jul 28 13:04:42 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 28 13:06:25 vmi2703391 systemd[1]: Stopping AlphaTango Arbitrage Bot...
+Jul 28 13:07:25 vmi2703391 systemd[1]: alphatango.service: State 'stop-sigterm' timed out. Killing.
+Jul 28 13:07:25 vmi2703391 systemd[1]: alphatango.service: Killing process 4592 (python3) with signal SIGKILL.
+Jul 28 13:07:25 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=killed, status=9/KILL
+Jul 28 13:07:25 vmi2703391 systemd[1]: alphatango.service: Failed with result 'timeout'.
+Jul 28 13:07:25 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 28 13:07:25 vmi2703391 systemd[1]: alphatango.service: Consumed 20.080s CPU time.
+Jul 28 13:07:25 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 28 13:07:38 vmi2703391 systemd[1]: Stopping AlphaTango Arbitrage Bot...
+[2025-07-28 14:40:41] Restarting AlphaTango service...
+[2025-07-28 14:40:41] Restart complete. Status: active
+
+📜 Recent Logs:
+Jul 28 14:40:06 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=exited, status=1/FAILURE
+Jul 28 14:40:06 vmi2703391 systemd[1]: alphatango.service: Failed with result 'exit-code'.
+Jul 28 14:40:06 vmi2703391 systemd[1]: alphatango.service: Consumed 3.977s CPU time.
+Jul 28 14:40:16 vmi2703391 systemd[1]: alphatango.service: Scheduled restart job, restart counter is at 21.
+Jul 28 14:40:16 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 28 14:40:16 vmi2703391 systemd[1]: alphatango.service: Consumed 3.977s CPU time.
+Jul 28 14:40:16 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 28 14:40:20 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=exited, status=1/FAILURE
+Jul 28 14:40:20 vmi2703391 systemd[1]: alphatango.service: Failed with result 'exit-code'.
+Jul 28 14:40:20 vmi2703391 systemd[1]: alphatango.service: Consumed 3.923s CPU time.
+Jul 28 14:40:31 vmi2703391 systemd[1]: alphatango.service: Scheduled restart job, restart counter is at 22.
+Jul 28 14:40:31 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 28 14:40:31 vmi2703391 systemd[1]: alphatango.service: Consumed 3.923s CPU time.
+Jul 28 14:40:31 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 28 14:40:34 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=exited, status=1/FAILURE
+Jul 28 14:40:34 vmi2703391 systemd[1]: alphatango.service: Failed with result 'exit-code'.
+Jul 28 14:40:34 vmi2703391 systemd[1]: alphatango.service: Consumed 3.555s CPU time.
+Jul 28 14:40:41 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 28 14:40:41 vmi2703391 systemd[1]: alphatango.service: Consumed 3.555s CPU time.
+Jul 28 14:40:41 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+[2025-07-28 20:40:59] Restarting AlphaTango service...
+[2025-07-28 20:40:59] Restart complete. Status: active
+
+📜 Recent Logs:
+Jul 28 20:40:55 vmi2703391 python3[19390]:   File "/opt/alphatango/executors/live_executor.py", line 12, in <module>
+Jul 28 20:40:55 vmi2703391 python3[19390]:     from pnl_logger import log_trade_to_csv
+Jul 28 20:40:55 vmi2703391 python3[19390]: ModuleNotFoundError: No module named 'pnl_logger'
+Jul 28 20:40:55 vmi2703391 python3[19390]: Traceback (most recent call last):
+Jul 28 20:40:55 vmi2703391 python3[19390]:   File "/opt/alphatango/main.py", line 40, in <module>
+Jul 28 20:40:55 vmi2703391 python3[19390]:     from executors.live_executor import LiveExecutor as Executor
+Jul 28 20:40:55 vmi2703391 python3[19390]:   File "/opt/alphatango/executors/live_executor.py", line 12, in <module>
+Jul 28 20:40:55 vmi2703391 python3[19390]:     from pnl_logger import log_trade_to_csv
+Jul 28 20:40:55 vmi2703391 python3[19390]: ModuleNotFoundError: No module named 'pnl_logger'
+Jul 28 20:40:55 vmi2703391 python3[19390]: During handling of the above exception, another exception occurred:
+Jul 28 20:40:55 vmi2703391 python3[19390]: Traceback (most recent call last):
+Jul 28 20:40:55 vmi2703391 python3[19390]:   File "/opt/alphatango/main.py", line 46, in <module>
+Jul 28 20:40:55 vmi2703391 python3[19390]:     raise ImportError(f"Gagal import executor/streamer untuk mod {Config.MODE}: {e}")
+Jul 28 20:40:55 vmi2703391 python3[19390]: ImportError: Gagal import executor/streamer untuk mod LIVE: No module named 'pnl_logger'
+Jul 28 20:40:55 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=exited, status=1/FAILURE
+Jul 28 20:40:55 vmi2703391 systemd[1]: alphatango.service: Failed with result 'exit-code'.
+Jul 28 20:40:55 vmi2703391 systemd[1]: alphatango.service: Consumed 3.281s CPU time.
+Jul 28 20:41:00 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 28 20:41:00 vmi2703391 systemd[1]: alphatango.service: Consumed 3.281s CPU time.
+Jul 28 20:41:00 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+[2025-07-29 01:48:14] Restarting AlphaTango service...
+[2025-07-29 01:48:14] Restart complete. Status: activating
+
+📜 Recent Logs:
+Jul 29 01:48:13 vmi2703391 systemd[1]: alphatango.service: Killing process 32903 (python3) with signal SIGKILL.
+Jul 29 01:48:13 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=killed, status=9/KILL
+Jul 29 01:48:13 vmi2703391 systemd[1]: alphatango.service: Failed with result 'timeout'.
+Jul 29 01:48:13 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 29 01:48:13 vmi2703391 systemd[1]: alphatango.service: Consumed 3min 27.787s CPU time.
+Jul 29 01:48:13 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 29 01:48:14 vmi2703391 python3[35599]:   File "/opt/alphatango/main.py", line 49
+Jul 29 01:48:14 vmi2703391 python3[35599]:     await message.answer(f"?? Simbol aktif:
+Jul 29 01:48:14 vmi2703391 python3[35599]:                          ^
+Jul 29 01:48:14 vmi2703391 python3[35599]: SyntaxError: unterminated string literal (detected at line 49)
+Jul 29 01:48:14 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=exited, status=1/FAILURE
+Jul 29 01:48:14 vmi2703391 systemd[1]: alphatango.service: Failed with result 'exit-code'.
+Jul 29 01:48:14 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 29 01:48:14 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 29 01:48:14 vmi2703391 python3[35610]:   File "/opt/alphatango/main.py", line 49
+Jul 29 01:48:14 vmi2703391 python3[35610]:     await message.answer(f"?? Simbol aktif:
+Jul 29 01:48:14 vmi2703391 python3[35610]:                          ^
+Jul 29 01:48:14 vmi2703391 python3[35610]: SyntaxError: unterminated string literal (detected at line 49)
+Jul 29 01:48:14 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=exited, status=1/FAILURE
+Jul 29 01:48:14 vmi2703391 systemd[1]: alphatango.service: Failed with result 'exit-code'.
+[2025-07-29 02:00:59] Restarting AlphaTango service...
+[2025-07-29 02:00:59] Restart complete. Status: active
+
+📜 Recent Logs:
+Jul 29 02:00:48 vmi2703391 python3[36018]:   File "/opt/alphatango/main.py", line 6, in <module>
+Jul 29 02:00:48 vmi2703391 python3[36018]:     from .commands import handle_mute, handle_unmute, handle_status
+Jul 29 02:00:48 vmi2703391 python3[36018]: ImportError: attempted relative import with no known parent package
+Jul 29 02:00:48 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=exited, status=1/FAILURE
+Jul 29 02:00:48 vmi2703391 systemd[1]: alphatango.service: Failed with result 'exit-code'.
+Jul 29 02:00:48 vmi2703391 systemd[1]: alphatango.service: Consumed 3.089s CPU time.
+Jul 29 02:00:53 vmi2703391 systemd[1]: alphatango.service: Scheduled restart job, restart counter is at 139.
+Jul 29 02:00:53 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 29 02:00:53 vmi2703391 systemd[1]: alphatango.service: Consumed 3.089s CPU time.
+Jul 29 02:00:53 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 29 02:00:57 vmi2703391 python3[36021]: Traceback (most recent call last):
+Jul 29 02:00:57 vmi2703391 python3[36021]:   File "/opt/alphatango/main.py", line 6, in <module>
+Jul 29 02:00:57 vmi2703391 python3[36021]:     from .commands import handle_mute, handle_unmute, handle_status
+Jul 29 02:00:57 vmi2703391 python3[36021]: ImportError: attempted relative import with no known parent package
+Jul 29 02:00:56 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=exited, status=1/FAILURE
+Jul 29 02:00:56 vmi2703391 systemd[1]: alphatango.service: Failed with result 'exit-code'.
+Jul 29 02:00:56 vmi2703391 systemd[1]: alphatango.service: Consumed 3.054s CPU time.
+Jul 29 02:00:59 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 29 02:00:59 vmi2703391 systemd[1]: alphatango.service: Consumed 3.054s CPU time.
+Jul 29 02:00:59 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+[2025-07-29 02:21:24] Restarting AlphaTango service...
+[2025-07-29 02:21:24] Restart complete. Status: active
+
+📜 Recent Logs:
+Jul 29 02:21:14 vmi2703391 systemd[1]: alphatango.service: Scheduled restart job, restart counter is at 82.
+Jul 29 02:21:14 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 29 02:21:14 vmi2703391 systemd[1]: alphatango.service: Consumed 2.889s CPU time.
+Jul 29 02:21:14 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 29 02:21:17 vmi2703391 python3[36734]: Traceback (most recent call last):
+Jul 29 02:21:17 vmi2703391 python3[36734]:   File "/opt/alphatango/main.py", line 9, in <module>
+Jul 29 02:21:17 vmi2703391 python3[36734]:     from alphatelegram.commands import setup_command_handlers  # ini kalau kau guna utk mute/unmute/status
+Jul 29 02:21:17 vmi2703391 python3[36734]: ImportError: cannot import name 'setup_command_handlers' from 'alphatelegram.commands' (/opt/alphatango/alphatelegram/commands.py)
+Jul 29 02:21:17 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=exited, status=1/FAILURE
+Jul 29 02:21:17 vmi2703391 systemd[1]: alphatango.service: Failed with result 'exit-code'.
+Jul 29 02:21:17 vmi2703391 systemd[1]: alphatango.service: Consumed 2.909s CPU time.
+Jul 29 02:21:22 vmi2703391 systemd[1]: alphatango.service: Scheduled restart job, restart counter is at 83.
+Jul 29 02:21:22 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 29 02:21:22 vmi2703391 systemd[1]: alphatango.service: Consumed 2.909s CPU time.
+Jul 29 02:21:22 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 29 02:21:24 vmi2703391 systemd[1]: Stopping AlphaTango Arbitrage Bot...
+Jul 29 02:21:24 vmi2703391 systemd[1]: alphatango.service: Deactivated successfully.
+Jul 29 02:21:24 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 29 02:21:24 vmi2703391 systemd[1]: alphatango.service: Consumed 2.147s CPU time.
+Jul 29 02:21:24 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+[2025-07-29 02:38:32] Restarting AlphaTango service...
+[2025-07-29 02:38:32] Restart complete. Status: active
+
+📜 Recent Logs:
+Jul 29 02:38:18 vmi2703391 systemd[1]: alphatango.service: Consumed 2.776s CPU time.
+Jul 29 02:38:24 vmi2703391 systemd[1]: alphatango.service: Scheduled restart job, restart counter is at 97.
+Jul 29 02:38:24 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 29 02:38:24 vmi2703391 systemd[1]: alphatango.service: Consumed 2.776s CPU time.
+Jul 29 02:38:24 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 29 02:38:26 vmi2703391 python3[37322]: Traceback (most recent call last):
+Jul 29 02:38:26 vmi2703391 python3[37322]:   File "/opt/alphatango/main.py", line 9, in <module>
+Jul 29 02:38:26 vmi2703391 python3[37322]:     from alphatelegram.commands import setup_command_handlers  # ini kalau kau guna utk mute/unmute/status
+Jul 29 02:38:26 vmi2703391 python3[37322]: ImportError: cannot import name 'setup_command_handlers' from 'alphatelegram.commands' (/opt/alphatango/alphatelegram/commands.py)
+Jul 29 02:38:26 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=exited, status=1/FAILURE
+Jul 29 02:38:26 vmi2703391 systemd[1]: alphatango.service: Failed with result 'exit-code'.
+Jul 29 02:38:26 vmi2703391 systemd[1]: alphatango.service: Consumed 2.754s CPU time.
+Jul 29 02:38:32 vmi2703391 systemd[1]: alphatango.service: Scheduled restart job, restart counter is at 98.
+Jul 29 02:38:32 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 29 02:38:32 vmi2703391 systemd[1]: alphatango.service: Consumed 2.754s CPU time.
+Jul 29 02:38:32 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 29 02:38:32 vmi2703391 systemd[1]: Stopping AlphaTango Arbitrage Bot...
+Jul 29 02:38:32 vmi2703391 systemd[1]: alphatango.service: Deactivated successfully.
+Jul 29 02:38:32 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 29 02:38:32 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+[2025-07-29 02:40:56] Restarting AlphaTango service...
+[2025-07-29 02:40:56] Restart complete. Status: activating
+
+📜 Recent Logs:
+Jul 29 02:40:56 vmi2703391 python3[37463]: Traceback (most recent call last):
+Jul 29 02:40:56 vmi2703391 python3[37463]:   File "/opt/alphatango/main.py", line 39, in <module>
+Jul 29 02:40:56 vmi2703391 python3[37463]:     from executors.live_executor import LiveExecutor as Executor
+Jul 29 02:40:56 vmi2703391 python3[37463]:   File "/opt/alphatango/executors/live_executor.py", line 6, in <module>
+Jul 29 02:40:56 vmi2703391 python3[37463]:     from streamers.price_streamer import get_price
+Jul 29 02:40:56 vmi2703391 python3[37463]: ImportError: cannot import name 'get_price' from 'streamers.price_streamer' (/opt/alphatango/streamers/price_streamer.py)
+Jul 29 02:40:57 vmi2703391 python3[37463]: 29:07:25 02:40:57 [WARNING] [TELEGRAM] Gagal hantar mesej. Status: 400
+Jul 29 02:40:57 vmi2703391 python3[37463]: Traceback (most recent call last):
+Jul 29 02:40:57 vmi2703391 python3[37463]:   File "/opt/alphatango/main.py", line 39, in <module>
+Jul 29 02:40:57 vmi2703391 python3[37463]:     from executors.live_executor import LiveExecutor as Executor
+Jul 29 02:40:57 vmi2703391 python3[37463]:   File "/opt/alphatango/executors/live_executor.py", line 6, in <module>
+Jul 29 02:40:57 vmi2703391 python3[37463]:     from streamers.price_streamer import get_price
+Jul 29 02:40:57 vmi2703391 python3[37463]: ImportError: cannot import name 'get_price' from 'streamers.price_streamer' (/opt/alphatango/streamers/price_streamer.py)
+Jul 29 02:40:57 vmi2703391 python3[37463]: During handling of the above exception, another exception occurred:
+Jul 29 02:40:57 vmi2703391 python3[37463]: Traceback (most recent call last):
+Jul 29 02:40:57 vmi2703391 python3[37463]:   File "/opt/alphatango/main.py", line 47, in <module>
+Jul 29 02:40:57 vmi2703391 python3[37463]:     raise ImportError(f"Gagal import executor/streamer untuk mod {Config.MODE}: {e}")
+Jul 29 02:40:57 vmi2703391 python3[37463]: ImportError: Gagal import executor/streamer untuk mod LIVE: cannot import name 'get_price' from 'streamers.price_streamer' (/opt/alphatango/streamers/price_streamer.py)
+Jul 29 02:40:57 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=exited, status=1/FAILURE
+Jul 29 02:40:57 vmi2703391 systemd[1]: alphatango.service: Failed with result 'exit-code'.
+[2025-07-29 02:47:18] Restarting AlphaTango service...
+[2025-07-29 02:47:18] Restart complete. Status: activating
+
+📜 Recent Logs:
+Jul 29 02:47:19 vmi2703391 python3[37790]: Traceback (most recent call last):
+Jul 29 02:47:19 vmi2703391 python3[37790]:   File "/opt/alphatango/main.py", line 39, in <module>
+Jul 29 02:47:19 vmi2703391 python3[37790]:     from executors.live_executor import LiveExecutor as Executor
+Jul 29 02:47:19 vmi2703391 python3[37790]:   File "/opt/alphatango/executors/live_executor.py", line 6, in <module>
+Jul 29 02:47:19 vmi2703391 python3[37790]:     from streamers.price_streamer import get_price
+Jul 29 02:47:19 vmi2703391 python3[37790]: ImportError: cannot import name 'get_price' from 'streamers.price_streamer' (/opt/alphatango/streamers/price_streamer.py)
+Jul 29 02:47:20 vmi2703391 python3[37790]: 29:07:25 02:47:20 [WARNING] [TELEGRAM] Gagal hantar mesej. Status: 400
+Jul 29 02:47:20 vmi2703391 python3[37790]: Traceback (most recent call last):
+Jul 29 02:47:20 vmi2703391 python3[37790]:   File "/opt/alphatango/main.py", line 39, in <module>
+Jul 29 02:47:20 vmi2703391 python3[37790]:     from executors.live_executor import LiveExecutor as Executor
+Jul 29 02:47:20 vmi2703391 python3[37790]:   File "/opt/alphatango/executors/live_executor.py", line 6, in <module>
+Jul 29 02:47:20 vmi2703391 python3[37790]:     from streamers.price_streamer import get_price
+Jul 29 02:47:20 vmi2703391 python3[37790]: ImportError: cannot import name 'get_price' from 'streamers.price_streamer' (/opt/alphatango/streamers/price_streamer.py)
+Jul 29 02:47:20 vmi2703391 python3[37790]: During handling of the above exception, another exception occurred:
+Jul 29 02:47:20 vmi2703391 python3[37790]: Traceback (most recent call last):
+Jul 29 02:47:20 vmi2703391 python3[37790]:   File "/opt/alphatango/main.py", line 47, in <module>
+Jul 29 02:47:20 vmi2703391 python3[37790]:     raise ImportError(f"Gagal import executor/streamer untuk mod {Config.MODE}: {e}")
+Jul 29 02:47:20 vmi2703391 python3[37790]: ImportError: Gagal import executor/streamer untuk mod LIVE: cannot import name 'get_price' from 'streamers.price_streamer' (/opt/alphatango/streamers/price_streamer.py)
+Jul 29 02:47:20 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=exited, status=1/FAILURE
+Jul 29 02:47:20 vmi2703391 systemd[1]: alphatango.service: Failed with result 'exit-code'.
+[2025-07-29 02:50:21] Restarting AlphaTango service...
+[2025-07-29 02:50:21] Restart complete. Status: active
+
+📜 Recent Logs:
+Jul 29 02:50:20 vmi2703391 python3[38036]:     return future.result()
+Jul 29 02:50:20 vmi2703391 python3[38036]:   File "/opt/alphatango/main.py", line 107, in combined_main
+Jul 29 02:50:20 vmi2703391 python3[38036]:     from alphatelegram.handlers import register_handlers
+Jul 29 02:50:20 vmi2703391 python3[38036]:   File "/opt/alphatango/alphatelegram/handlers.py", line 32, in <module>
+Jul 29 02:50:20 vmi2703391 python3[38036]:     async def mute_handler(message: Message):
+Jul 29 02:50:20 vmi2703391 python3[38036]:   File "/usr/local/lib/python3.10/dist-packages/aiogram/dispatcher/event/telegram.py", line 138, in wrapper
+Jul 29 02:50:20 vmi2703391 python3[38036]:     self.register(callback, *filters, flags=flags, **kwargs)
+Jul 29 02:50:20 vmi2703391 python3[38036]:   File "/usr/local/lib/python3.10/dist-packages/aiogram/dispatcher/event/telegram.py", line 68, in register
+Jul 29 02:50:20 vmi2703391 python3[38036]:     raise UnsupportedKeywordArgument(
+Jul 29 02:50:20 vmi2703391 python3[38036]: aiogram.exceptions.UnsupportedKeywordArgument: Passing any additional keyword arguments to the registrar method is not supported.
+Jul 29 02:50:20 vmi2703391 python3[38036]: This error may be caused when you are trying to register filters like in 2.x version of this framework, if it's true just look at correspoding documentation pages.
+Jul 29 02:50:20 vmi2703391 python3[38036]: Please remove the {'commands'} arguments from this call.
+Jul 29 02:50:20 vmi2703391 python3[38036]: (background on this error at: https://docs.aiogram.dev/en/dev-3.x/migration_2_to_3.html#filtering-events)
+Jul 29 02:50:21 vmi2703391 python3[38036]: 29:07:25 02:50:21 [WARNING] [TELEGRAM] Gagal hantar mesej. Status: 400
+Jul 29 02:50:21 vmi2703391 systemd[1]: Stopping AlphaTango Arbitrage Bot...
+Jul 29 02:50:21 vmi2703391 systemd[1]: alphatango.service: Deactivated successfully.
+Jul 29 02:50:21 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 29 02:50:21 vmi2703391 systemd[1]: alphatango.service: Consumed 2.708s CPU time.
+Jul 29 02:50:21 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 29 02:50:21 vmi2703391 python3[38050]: 29:07:25 02:50:21 [INFO] [STARTUP] Memulakan AlphaTango dalam mode LIVE...
+[2025-07-29 02:53:34] Restarting AlphaTango service...
+[2025-07-29 02:53:34] Restart complete. Status: active
+
+📜 Recent Logs:
+Jul 29 02:53:30 vmi2703391 systemd[1]: alphatango.service: Consumed 3.214s CPU time.
+Jul 29 02:53:30 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 29 02:53:31 vmi2703391 python3[38241]: 29:07:25 02:53:31 [INFO] [STARTUP] Memulakan AlphaTango dalam mode LIVE...
+Jul 29 02:53:33 vmi2703391 python3[38241]: 29:07:25 02:53:33 [ERROR] [FATAL MAIN] name 'setup_command_handlers' is not defined
+Jul 29 02:53:33 vmi2703391 python3[38241]: Traceback (most recent call last):
+Jul 29 02:53:33 vmi2703391 python3[38241]:   File "/opt/alphatango/main.py", line 130, in <module>
+Jul 29 02:53:33 vmi2703391 python3[38241]:     asyncio.run(combined_main())
+Jul 29 02:53:33 vmi2703391 python3[38241]:   File "/usr/lib/python3.10/asyncio/runners.py", line 44, in run
+Jul 29 02:53:33 vmi2703391 python3[38241]:     return loop.run_until_complete(main)
+Jul 29 02:53:33 vmi2703391 python3[38241]:   File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+Jul 29 02:53:33 vmi2703391 python3[38241]:     return future.result()
+Jul 29 02:53:33 vmi2703391 python3[38241]:   File "/opt/alphatango/main.py", line 113, in combined_main
+Jul 29 02:53:33 vmi2703391 python3[38241]:     setup_command_handlers(dp)    # handle mute/unmute/status (jika kau guna)
+Jul 29 02:53:33 vmi2703391 python3[38241]: NameError: name 'setup_command_handlers' is not defined
+Jul 29 02:53:34 vmi2703391 systemd[1]: Stopping AlphaTango Arbitrage Bot...
+Jul 29 02:53:34 vmi2703391 systemd[1]: alphatango.service: Deactivated successfully.
+Jul 29 02:53:34 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 29 02:53:34 vmi2703391 systemd[1]: alphatango.service: Consumed 3.011s CPU time.
+Jul 29 02:53:34 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 29 02:53:35 vmi2703391 python3[38259]: 29:07:25 02:53:35 [INFO] [STARTUP] Memulakan AlphaTango dalam mode LIVE...
+[2025-07-29 02:57:35] Restarting AlphaTango service...
+[2025-07-29 02:57:35] Restart complete. Status: deactivating
+
+📜 Recent Logs:
+Jul 29 02:58:28 vmi2703391 python3[38431]: Traceback (most recent call last):
+Jul 29 02:58:28 vmi2703391 python3[38431]:   File "/opt/alphatango/scanner/symbol_selector.py", line 15, in get_arbitrage_opportunity
+Jul 29 02:58:28 vmi2703391 python3[38431]:     selected = random.choice(symbols)
+Jul 29 02:58:28 vmi2703391 python3[38431]:   File "/usr/lib/python3.10/random.py", line 378, in choice
+Jul 29 02:58:28 vmi2703391 python3[38431]:     return seq[self._randbelow(len(seq))]
+Jul 29 02:58:28 vmi2703391 python3[38431]: TypeError: object of type 'coroutine' has no len()
+Jul 29 02:58:33 vmi2703391 python3[38431]: 29:07:25 02:58:33 [ERROR] [ARBITRAGE SCANNER] Ralat semasa cari peluang arbitrage: object of type 'coroutine' has no len()
+Jul 29 02:58:33 vmi2703391 python3[38431]: Traceback (most recent call last):
+Jul 29 02:58:33 vmi2703391 python3[38431]:   File "/opt/alphatango/scanner/symbol_selector.py", line 15, in get_arbitrage_opportunity
+Jul 29 02:58:33 vmi2703391 python3[38431]:     selected = random.choice(symbols)
+Jul 29 02:58:33 vmi2703391 python3[38431]:   File "/usr/lib/python3.10/random.py", line 378, in choice
+Jul 29 02:58:33 vmi2703391 python3[38431]:     return seq[self._randbelow(len(seq))]
+Jul 29 02:58:33 vmi2703391 python3[38431]: TypeError: object of type 'coroutine' has no len()
+Jul 29 02:58:38 vmi2703391 python3[38431]: 29:07:25 02:58:38 [ERROR] [ARBITRAGE SCANNER] Ralat semasa cari peluang arbitrage: object of type 'coroutine' has no len()
+Jul 29 02:58:38 vmi2703391 python3[38431]: Traceback (most recent call last):
+Jul 29 02:58:38 vmi2703391 python3[38431]:   File "/opt/alphatango/scanner/symbol_selector.py", line 15, in get_arbitrage_opportunity
+Jul 29 02:58:38 vmi2703391 python3[38431]:     selected = random.choice(symbols)
+Jul 29 02:58:38 vmi2703391 python3[38431]:   File "/usr/lib/python3.10/random.py", line 378, in choice
+Jul 29 02:58:38 vmi2703391 python3[38431]:     return seq[self._randbelow(len(seq))]
+Jul 29 02:58:38 vmi2703391 python3[38431]: TypeError: object of type 'coroutine' has no len()
+[2025-07-29 03:00:25] Restarting AlphaTango service...
+[2025-07-29 03:00:25] Restart complete. Status: deactivating
+
+📜 Recent Logs:
+Jul 29 03:00:29 vmi2703391 python3[38492]: Traceback (most recent call last):
+Jul 29 03:00:29 vmi2703391 python3[38492]:   File "/opt/alphatango/scanner/symbol_selector.py", line 15, in get_arbitrage_opportunity
+Jul 29 03:00:29 vmi2703391 python3[38492]:     "symbol": selected,
+Jul 29 03:00:29 vmi2703391 python3[38492]:   File "/usr/lib/python3.10/random.py", line 378, in choice
+Jul 29 03:00:29 vmi2703391 python3[38492]:     return seq[self._randbelow(len(seq))]
+Jul 29 03:00:29 vmi2703391 python3[38492]: TypeError: object of type 'coroutine' has no len()
+Jul 29 03:00:34 vmi2703391 python3[38492]: 29:07:25 03:00:34 [ERROR] [ARBITRAGE SCANNER] Ralat semasa cari peluang arbitrage: object of type 'coroutine' has no len()
+Jul 29 03:00:34 vmi2703391 python3[38492]: Traceback (most recent call last):
+Jul 29 03:00:34 vmi2703391 python3[38492]:   File "/opt/alphatango/scanner/symbol_selector.py", line 15, in get_arbitrage_opportunity
+Jul 29 03:00:34 vmi2703391 python3[38492]:     "symbol": selected,
+Jul 29 03:00:34 vmi2703391 python3[38492]:   File "/usr/lib/python3.10/random.py", line 378, in choice
+Jul 29 03:00:34 vmi2703391 python3[38492]:     return seq[self._randbelow(len(seq))]
+Jul 29 03:00:34 vmi2703391 python3[38492]: TypeError: object of type 'coroutine' has no len()
+Jul 29 03:00:39 vmi2703391 python3[38492]: 29:07:25 03:00:39 [ERROR] [ARBITRAGE SCANNER] Ralat semasa cari peluang arbitrage: object of type 'coroutine' has no len()
+Jul 29 03:00:39 vmi2703391 python3[38492]: Traceback (most recent call last):
+Jul 29 03:00:39 vmi2703391 python3[38492]:   File "/opt/alphatango/scanner/symbol_selector.py", line 15, in get_arbitrage_opportunity
+Jul 29 03:00:39 vmi2703391 python3[38492]:     "symbol": selected,
+Jul 29 03:00:39 vmi2703391 python3[38492]:   File "/usr/lib/python3.10/random.py", line 378, in choice
+Jul 29 03:00:39 vmi2703391 python3[38492]:     return seq[self._randbelow(len(seq))]
+Jul 29 03:00:39 vmi2703391 python3[38492]: TypeError: object of type 'coroutine' has no len()
+[2025-07-29 03:02:19] Restarting AlphaTango service...
+[2025-07-29 03:02:19] Restart complete. Status: deactivating
+
+📜 Recent Logs:
+Jul 29 03:02:18 vmi2703391 python3[38548]: Traceback (most recent call last):
+Jul 29 03:02:18 vmi2703391 python3[38548]:   File "/opt/alphatango/executors/live_executor.py", line 30, in execute_trade
+Jul 29 03:02:18 vmi2703391 python3[38548]:     min_notional = float(filters['MIN_NOTIONAL']['minNotional'])
+Jul 29 03:02:18 vmi2703391 python3[38548]: KeyError: 'MIN_NOTIONAL'
+Jul 29 03:02:19 vmi2703391 systemd[1]: Stopping AlphaTango Arbitrage Bot...
+Jul 29 03:02:19 vmi2703391 python3[38548]: 29:07:25 03:02:19 [WARNING] Received SIGTERM signal
+Jul 29 03:02:19 vmi2703391 python3[38548]: 29:07:25 03:02:19 [INFO] Polling stopped for bot @ToluArbitrageBot id=7912775711 - 'ArbitrageBot'
+Jul 29 03:02:19 vmi2703391 python3[38548]: 29:07:25 03:02:19 [INFO] Polling stopped
+Jul 29 03:02:23 vmi2703391 python3[38548]: 29:07:25 03:02:23 [INFO] [OPPORTUNITY] BTCUSDT | Base: BTC | Quote: USDT | Profit: 1.8794 RM
+Jul 29 03:02:24 vmi2703391 python3[38548]: 29:07:25 03:02:24 [ERROR] [EXECUTOR ERROR] BTCUSDT | 'MIN_NOTIONAL'
+Jul 29 03:02:24 vmi2703391 python3[38548]: Traceback (most recent call last):
+Jul 29 03:02:24 vmi2703391 python3[38548]:   File "/opt/alphatango/executors/live_executor.py", line 30, in execute_trade
+Jul 29 03:02:24 vmi2703391 python3[38548]:     min_notional = float(filters['MIN_NOTIONAL']['minNotional'])
+Jul 29 03:02:24 vmi2703391 python3[38548]: KeyError: 'MIN_NOTIONAL'
+Jul 29 03:02:29 vmi2703391 python3[38548]: 29:07:25 03:02:29 [INFO] [OPPORTUNITY] ADAUSDT | Base: ADA | Quote: USDT | Profit: 0.8016 RM
+Jul 29 03:02:30 vmi2703391 python3[38548]: 29:07:25 03:02:30 [ERROR] [EXECUTOR ERROR] ADAUSDT | 'MIN_NOTIONAL'
+Jul 29 03:02:30 vmi2703391 python3[38548]: Traceback (most recent call last):
+Jul 29 03:02:30 vmi2703391 python3[38548]:   File "/opt/alphatango/executors/live_executor.py", line 30, in execute_trade
+Jul 29 03:02:30 vmi2703391 python3[38548]:     min_notional = float(filters['MIN_NOTIONAL']['minNotional'])
+Jul 29 03:02:30 vmi2703391 python3[38548]: KeyError: 'MIN_NOTIONAL'
+[2025-07-29 03:04:48] Restarting AlphaTango service...
+[2025-07-29 03:04:48] Restart complete. Status: active
+
+📜 Recent Logs:
+Jul 29 03:06:11 vmi2703391 python3[38643]: Traceback (most recent call last):
+Jul 29 03:06:11 vmi2703391 python3[38643]:   File "/opt/alphatango/executors/live_executor.py", line 30, in execute_trade
+Jul 29 03:06:11 vmi2703391 python3[38643]:     min_qty = float(filters['LOT_SIZE']['minQty'])
+Jul 29 03:06:11 vmi2703391 python3[38643]: KeyError: 'MIN_NOTIONAL'
+Jul 29 03:06:16 vmi2703391 python3[38643]: 29:07:25 03:06:16 [INFO] [OPPORTUNITY] MATICUSDT | Base: MATIC | Quote: USDT | Profit: 0.6238 RM
+Jul 29 03:06:16 vmi2703391 python3[38643]: 29:07:25 03:06:16 [ERROR] [EXECUTOR ERROR] MATICUSDT | 'MIN_NOTIONAL'
+Jul 29 03:06:16 vmi2703391 python3[38643]: Traceback (most recent call last):
+Jul 29 03:06:16 vmi2703391 python3[38643]:   File "/opt/alphatango/executors/live_executor.py", line 30, in execute_trade
+Jul 29 03:06:16 vmi2703391 python3[38643]:     min_qty = float(filters['LOT_SIZE']['minQty'])
+Jul 29 03:06:16 vmi2703391 python3[38643]: KeyError: 'MIN_NOTIONAL'
+Jul 29 03:06:18 vmi2703391 systemd[1]: alphatango.service: State 'stop-sigterm' timed out. Killing.
+Jul 29 03:06:18 vmi2703391 systemd[1]: alphatango.service: Killing process 38643 (python3) with signal SIGKILL.
+Jul 29 03:06:18 vmi2703391 systemd[1]: alphatango.service: Killing process 38647 (python3) with signal SIGKILL.
+Jul 29 03:06:18 vmi2703391 systemd[1]: alphatango.service: Killing process 38648 (n/a) with signal SIGKILL.
+Jul 29 03:06:18 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=killed, status=9/KILL
+Jul 29 03:06:18 vmi2703391 systemd[1]: alphatango.service: Failed with result 'timeout'.
+Jul 29 03:06:18 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 29 03:06:18 vmi2703391 systemd[1]: alphatango.service: Consumed 12.046s CPU time.
+Jul 29 03:06:18 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 29 03:06:18 vmi2703391 python3[38721]: 29:07:25 03:06:18 [INFO] [STARTUP] Memulakan AlphaTango dalam mode LIVE...
+[2025-07-29 03:11:22] Restarting AlphaTango service...
+[2025-07-29 03:11:22] Restart complete. Status: active
+
+📜 Recent Logs:
+Jul 29 03:12:42 vmi2703391 python3[38721]:   File "/opt/alphatango/executors/live_executor.py", line 51, in execute_trade
+Jul 29 03:12:42 vmi2703391 python3[38721]:     logging.warning(f"[EXECUTOR] Guna fallback REST harga untuk {symbol}: {price}")
+Jul 29 03:12:42 vmi2703391 python3[38721]: AttributeError: type object 'Config' has no attribute 'LIVE_TRADE_USDT'
+Jul 29 03:12:47 vmi2703391 python3[38721]: 29:07:25 03:12:47 [INFO] [OPPORTUNITY] SHIBUSDT | Base: SHIB | Quote: USDT | Profit: 0.8565 RM
+Jul 29 03:12:48 vmi2703391 python3[38721]: 29:07:25 03:12:48 [ERROR] [EXECUTOR ERROR] SHIBUSDT | type object 'Config' has no attribute 'LIVE_TRADE_USDT'
+Jul 29 03:12:48 vmi2703391 python3[38721]: Traceback (most recent call last):
+Jul 29 03:12:48 vmi2703391 python3[38721]:   File "/opt/alphatango/executors/live_executor.py", line 51, in execute_trade
+Jul 29 03:12:48 vmi2703391 python3[38721]:     logging.warning(f"[EXECUTOR] Guna fallback REST harga untuk {symbol}: {price}")
+Jul 29 03:12:48 vmi2703391 python3[38721]: AttributeError: type object 'Config' has no attribute 'LIVE_TRADE_USDT'
+Jul 29 03:12:53 vmi2703391 python3[38721]: 29:07:25 03:12:53 [INFO] [OPPORTUNITY] SOLUSDT | Base: SOL | Quote: USDT | Profit: 1.5449 RM
+Jul 29 03:12:53 vmi2703391 systemd[1]: alphatango.service: State 'stop-sigterm' timed out. Killing.
+Jul 29 03:12:53 vmi2703391 systemd[1]: alphatango.service: Killing process 38721 (python3) with signal SIGKILL.
+Jul 29 03:12:53 vmi2703391 systemd[1]: alphatango.service: Killing process 38734 (python3) with signal SIGKILL.
+Jul 29 03:12:53 vmi2703391 systemd[1]: alphatango.service: Killing process 38735 (python3) with signal SIGKILL.
+Jul 29 03:12:53 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=killed, status=9/KILL
+Jul 29 03:12:53 vmi2703391 systemd[1]: alphatango.service: Failed with result 'timeout'.
+Jul 29 03:12:53 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 29 03:12:53 vmi2703391 systemd[1]: alphatango.service: Consumed 26.166s CPU time.
+Jul 29 03:12:53 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 29 03:12:53 vmi2703391 python3[38960]: 29:07:25 03:12:53 [INFO] [STARTUP] Memulakan AlphaTango dalam mode LIVE...
+[2025-07-29 03:44:09] Restarting AlphaTango service...
+[2025-07-29 03:45:28] Restarting AlphaTango service...
+[2025-07-29 03:45:28] Restart complete. Status: active
+
+📜 Recent Logs:
+Jul 29 03:45:33 vmi2703391 python3[38960]: Traceback (most recent call last):
+Jul 29 03:45:33 vmi2703391 python3[38960]:   File "/opt/alphatango/executors/live_executor.py", line 57, in execute_trade
+Jul 29 03:45:33 vmi2703391 python3[38960]:     notional = Config.LIVE_TRADE_USDT
+Jul 29 03:45:33 vmi2703391 python3[38960]: AttributeError: type object 'Config' has no attribute 'LIVE_TRADE_USDT'
+Jul 29 03:45:38 vmi2703391 python3[38960]: 29:07:25 03:45:38 [INFO] [OPPORTUNITY] SOLUSDT | Base: SOL | Quote: USDT | Profit: 2.3117 RM
+Jul 29 03:45:39 vmi2703391 python3[38960]: 29:07:25 03:45:39 [ERROR] [EXECUTOR ERROR] SOLUSDT | type object 'Config' has no attribute 'LIVE_TRADE_USDT'
+Jul 29 03:45:39 vmi2703391 python3[38960]: Traceback (most recent call last):
+Jul 29 03:45:39 vmi2703391 python3[38960]:   File "/opt/alphatango/executors/live_executor.py", line 57, in execute_trade
+Jul 29 03:45:39 vmi2703391 python3[38960]:     notional = Config.LIVE_TRADE_USDT
+Jul 29 03:45:39 vmi2703391 python3[38960]: AttributeError: type object 'Config' has no attribute 'LIVE_TRADE_USDT'
+Jul 29 03:45:39 vmi2703391 systemd[1]: alphatango.service: State 'stop-sigterm' timed out. Killing.
+Jul 29 03:45:39 vmi2703391 systemd[1]: alphatango.service: Killing process 38960 (python3) with signal SIGKILL.
+Jul 29 03:45:39 vmi2703391 systemd[1]: alphatango.service: Killing process 38972 (python3) with signal SIGKILL.
+Jul 29 03:45:39 vmi2703391 systemd[1]: alphatango.service: Killing process 38973 (python3) with signal SIGKILL.
+Jul 29 03:45:39 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=killed, status=9/KILL
+Jul 29 03:45:39 vmi2703391 systemd[1]: alphatango.service: Failed with result 'timeout'.
+Jul 29 03:45:39 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 29 03:45:39 vmi2703391 systemd[1]: alphatango.service: Consumed 2min 6.821s CPU time.
+Jul 29 03:45:39 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 29 03:45:39 vmi2703391 python3[39594]: 29:07:25 03:45:39 [INFO] [STARTUP] Memulakan AlphaTango dalam mode LIVE...
+[2025-07-29 04:05:45] Restarting AlphaTango service...
+[2025-07-29 04:05:45] Restart complete. Status: active
+
+📜 Recent Logs:
+Jul 29 04:06:47 vmi2703391 python3[39594]: 29:07:25 04:06:47 [WARNING] [SKIP ORDER] MATICUSDT - Nilai notional (2.01) kurang dari MIN_NOTIONAL (5.0)
+Jul 29 04:06:52 vmi2703391 python3[39594]: 29:07:25 04:06:52 [INFO] [OPPORTUNITY] DOTUSDT | Base: DOT | Quote: USDT | Profit: 1.1283 RM
+Jul 29 04:06:53 vmi2703391 python3[39594]: 29:07:25 04:06:53 [WARNING] [SKIP ORDER] DOTUSDT - Nilai notional (2.00) kurang dari MIN_NOTIONAL (5.0)
+Jul 29 04:06:58 vmi2703391 python3[39594]: 29:07:25 04:06:58 [INFO] [OPPORTUNITY] ADAUSDT | Base: ADA | Quote: USDT | Profit: 0.5581 RM
+Jul 29 04:06:59 vmi2703391 python3[39594]: 29:07:25 04:06:59 [WARNING] [SKIP ORDER] ADAUSDT - Nilai notional (1.99) kurang dari MIN_NOTIONAL (5.0)
+Jul 29 04:07:04 vmi2703391 python3[39594]: 29:07:25 04:07:04 [INFO] [OPPORTUNITY] LTCUSDT | Base: LTC | Quote: USDT | Profit: 2.3918 RM
+Jul 29 04:07:04 vmi2703391 python3[39594]: 29:07:25 04:07:04 [WARNING] [SKIP ORDER] LTCUSDT - Nilai notional (1.97) kurang dari MIN_NOTIONAL (5.0)
+Jul 29 04:07:09 vmi2703391 python3[39594]: 29:07:25 04:07:09 [INFO] [OPPORTUNITY] ADAUSDT | Base: ADA | Quote: USDT | Profit: 0.8545 RM
+Jul 29 04:07:10 vmi2703391 python3[39594]: 29:07:25 04:07:10 [WARNING] [SKIP ORDER] ADAUSDT - Nilai notional (1.99) kurang dari MIN_NOTIONAL (5.0)
+Jul 29 04:07:15 vmi2703391 python3[39594]: 29:07:25 04:07:15 [INFO] [OPPORTUNITY] SOLUSDT | Base: SOL | Quote: USDT | Profit: 1.5198 RM
+Jul 29 04:07:15 vmi2703391 systemd[1]: alphatango.service: State 'stop-sigterm' timed out. Killing.
+Jul 29 04:07:15 vmi2703391 systemd[1]: alphatango.service: Killing process 39594 (python3) with signal SIGKILL.
+Jul 29 04:07:15 vmi2703391 systemd[1]: alphatango.service: Killing process 39606 (n/a) with signal SIGKILL.
+Jul 29 04:07:15 vmi2703391 systemd[1]: alphatango.service: Killing process 39607 (python3) with signal SIGKILL.
+Jul 29 04:07:15 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=killed, status=9/KILL
+Jul 29 04:07:15 vmi2703391 systemd[1]: alphatango.service: Failed with result 'timeout'.
+Jul 29 04:07:15 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 29 04:07:15 vmi2703391 systemd[1]: alphatango.service: Consumed 1min 21.877s CPU time.
+Jul 29 04:07:15 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 29 04:07:16 vmi2703391 python3[40025]: 29:07:25 04:07:16 [INFO] [STARTUP] Memulakan AlphaTango dalam mode LIVE...
+[2025-07-29 04:14:23] Restarting AlphaTango service...
+[2025-07-29 04:14:23] Restart complete. Status: activating
+
+📜 Recent Logs:
+Jul 29 04:14:22 vmi2703391 systemd[1]: alphatango.service: Failed with result 'exit-code'.
+Jul 29 04:14:23 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 29 04:14:23 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 29 04:14:23 vmi2703391 python3[40599]: 29:07:25 04:14:23 [INFO] [STARTUP] Memulakan AlphaTango dalam mode LIVE...
+Jul 29 04:14:24 vmi2703391 python3[40599]: 29:07:25 04:14:24 [ERROR] [IMPORT ERROR] cannot import name 'get_eligible_symbols' from 'scanner.symbol_selector' (/opt/alphatango/scanner/symbol_selector.py)
+Jul 29 04:14:24 vmi2703391 python3[40599]: Traceback (most recent call last):
+Jul 29 04:14:24 vmi2703391 python3[40599]:   File "/opt/alphatango/main.py", line 41, in <module>
+Jul 29 04:14:24 vmi2703391 python3[40599]:     from scanner.symbol_selector import get_eligible_symbols
+Jul 29 04:14:24 vmi2703391 python3[40599]: ImportError: cannot import name 'get_eligible_symbols' from 'scanner.symbol_selector' (/opt/alphatango/scanner/symbol_selector.py)
+Jul 29 04:14:25 vmi2703391 python3[40599]: Traceback (most recent call last):
+Jul 29 04:14:25 vmi2703391 python3[40599]:   File "/opt/alphatango/main.py", line 41, in <module>
+Jul 29 04:14:25 vmi2703391 python3[40599]:     from scanner.symbol_selector import get_eligible_symbols
+Jul 29 04:14:25 vmi2703391 python3[40599]: ImportError: cannot import name 'get_eligible_symbols' from 'scanner.symbol_selector' (/opt/alphatango/scanner/symbol_selector.py)
+Jul 29 04:14:25 vmi2703391 python3[40599]: During handling of the above exception, another exception occurred:
+Jul 29 04:14:25 vmi2703391 python3[40599]: Traceback (most recent call last):
+Jul 29 04:14:25 vmi2703391 python3[40599]:   File "/opt/alphatango/main.py", line 47, in <module>
+Jul 29 04:14:25 vmi2703391 python3[40599]:     raise ImportError(f"Gagal import executor/streamer untuk mod {Config.MODE}: {e}")
+Jul 29 04:14:25 vmi2703391 python3[40599]: ImportError: Gagal import executor/streamer untuk mod LIVE: cannot import name 'get_eligible_symbols' from 'scanner.symbol_selector' (/opt/alphatango/scanner/symbol_selector.py)
+Jul 29 04:14:25 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=exited, status=1/FAILURE
+Jul 29 04:14:25 vmi2703391 systemd[1]: alphatango.service: Failed with result 'exit-code'.
+[2025-07-29 04:25:05] Restarting AlphaTango service...
+[2025-07-29 04:25:05] Restart complete. Status: active
+
+📜 Recent Logs:
+Jul 29 04:24:05 vmi2703391 python3[41152]: 29:07:25 04:24:05 [INFO] [FILTER] Simbol ditolak: ADAUSDT (MIN_NOTIONAL=999.0)
+Jul 29 04:24:06 vmi2703391 python3[41152]: 29:07:25 04:24:06 [INFO] [FILTER] Simbol ditolak: XRPUSDT (MIN_NOTIONAL=999.0)
+Jul 29 04:24:06 vmi2703391 python3[41152]: 29:07:25 04:24:06 [INFO] [FILTER] Simbol ditolak: DOGEUSDT (MIN_NOTIONAL=999.0)
+Jul 29 04:24:07 vmi2703391 python3[41152]: 29:07:25 04:24:07 [INFO] [FILTER] Simbol ditolak: MATICUSDT (MIN_NOTIONAL=999.0)
+Jul 29 04:24:07 vmi2703391 python3[41152]: 29:07:25 04:24:07 [INFO] [FILTER] Simbol ditolak: DOTUSDT (MIN_NOTIONAL=999.0)
+Jul 29 04:24:08 vmi2703391 python3[41152]: 29:07:25 04:24:08 [INFO] [FILTER] Simbol ditolak: AVAXUSDT (MIN_NOTIONAL=999.0)
+Jul 29 04:24:08 vmi2703391 python3[41152]: 29:07:25 04:24:08 [INFO] [FILTER] Simbol ditolak: SHIBUSDT (MIN_NOTIONAL=999.0)
+Jul 29 04:24:08 vmi2703391 python3[41152]: 29:07:25 04:24:08 [INFO] [FILTER] Simbol ditolak: LTCUSDT (MIN_NOTIONAL=999.0)
+Jul 29 04:24:08 vmi2703391 python3[41152]: 29:07:25 04:24:08 [WARNING] [FILTER] Tiada simbol yang lepas tapisan minNotional.
+Jul 29 04:24:08 vmi2703391 python3[41152]: 29:07:25 04:24:08 [WARNING] [LIVE] Tiada simbol layak selepas tapisan. Keluar.
+Jul 29 04:25:32 vmi2703391 systemd[1]: alphatango.service: State 'stop-sigterm' timed out. Killing.
+Jul 29 04:25:32 vmi2703391 systemd[1]: alphatango.service: Killing process 41152 (python3) with signal SIGKILL.
+Jul 29 04:25:32 vmi2703391 systemd[1]: alphatango.service: Killing process 41160 (python3) with signal SIGKILL.
+Jul 29 04:25:32 vmi2703391 systemd[1]: alphatango.service: Killing process 41161 (python3) with signal SIGKILL.
+Jul 29 04:25:32 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=killed, status=9/KILL
+Jul 29 04:25:32 vmi2703391 systemd[1]: alphatango.service: Failed with result 'timeout'.
+Jul 29 04:25:32 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 29 04:25:32 vmi2703391 systemd[1]: alphatango.service: Consumed 6.533s CPU time.
+Jul 29 04:25:32 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 29 04:25:32 vmi2703391 python3[41213]: 29:07:25 04:25:32 [INFO] [STARTUP] Memulakan AlphaTango dalam mode LIVE...
+[2025-07-29 04:30:04] Restarting AlphaTango service...
+[2025-07-29 04:30:04] Restart complete. Status: active
+
+📜 Recent Logs:
+Jul 29 04:25:38 vmi2703391 python3[41213]: 29:07:25 04:25:38 [INFO] [FILTER] Simbol ditolak: DOTUSDT (MIN_NOTIONAL=999.0)
+Jul 29 04:25:39 vmi2703391 python3[41213]: 29:07:25 04:25:39 [INFO] [FILTER] Simbol ditolak: AVAXUSDT (MIN_NOTIONAL=999.0)
+Jul 29 04:25:39 vmi2703391 python3[41213]: 29:07:25 04:25:39 [INFO] [FILTER] Simbol ditolak: SHIBUSDT (MIN_NOTIONAL=999.0)
+Jul 29 04:25:40 vmi2703391 python3[41213]: 29:07:25 04:25:40 [INFO] [FILTER] Simbol ditolak: LTCUSDT (MIN_NOTIONAL=999.0)
+Jul 29 04:25:40 vmi2703391 python3[41213]: 29:07:25 04:25:40 [WARNING] [FILTER] Tiada simbol yang lepas tapisan minNotional.
+Jul 29 04:25:40 vmi2703391 python3[41213]: 29:07:25 04:25:40 [WARNING] [LIVE] Tiada simbol layak selepas tapisan. Keluar.
+Jul 29 04:30:04 vmi2703391 systemd[1]: Stopping AlphaTango Arbitrage Bot...
+Jul 29 04:30:04 vmi2703391 python3[41213]: 29:07:25 04:30:04 [WARNING] Received SIGTERM signal
+Jul 29 04:30:04 vmi2703391 python3[41213]: 29:07:25 04:30:04 [INFO] Polling stopped for bot @ToluArbitrageBot id=7912775711 - 'ArbitrageBot'
+Jul 29 04:30:04 vmi2703391 python3[41213]: 29:07:25 04:30:04 [INFO] Polling stopped
+Jul 29 04:31:34 vmi2703391 systemd[1]: alphatango.service: State 'stop-sigterm' timed out. Killing.
+Jul 29 04:31:34 vmi2703391 systemd[1]: alphatango.service: Killing process 41213 (python3) with signal SIGKILL.
+Jul 29 04:31:34 vmi2703391 systemd[1]: alphatango.service: Killing process 41231 (python3) with signal SIGKILL.
+Jul 29 04:31:34 vmi2703391 systemd[1]: alphatango.service: Killing process 41232 (python3) with signal SIGKILL.
+Jul 29 04:31:34 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=killed, status=9/KILL
+Jul 29 04:31:34 vmi2703391 systemd[1]: alphatango.service: Failed with result 'timeout'.
+Jul 29 04:31:34 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 29 04:31:34 vmi2703391 systemd[1]: alphatango.service: Consumed 6.142s CPU time.
+Jul 29 04:31:34 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 29 04:31:34 vmi2703391 python3[41319]: 29:07:25 04:31:34 [INFO] [STARTUP] Memulakan AlphaTango dalam mode LIVE...
+[2025-07-29 05:11:01] Restarting AlphaTango service...
+[2025-07-29 05:11:01] Restart complete. Status: active
+
+📜 Recent Logs:
+Jul 29 04:54:04 vmi2703391 python3[41319]: 29:07:25 04:54:04 [INFO] Update id=158954940 is handled. Duration 947 ms by bot id=7912775711
+Jul 29 04:54:57 vmi2703391 python3[41319]: 29:07:25 04:54:57 [INFO] Update id=158954941 is handled. Duration 414 ms by bot id=7912775711
+Jul 29 04:55:06 vmi2703391 python3[41319]: 29:07:25 04:55:06 [INFO] Update id=158954942 is handled. Duration 434 ms by bot id=7912775711
+Jul 29 04:56:01 vmi2703391 python3[41319]: 29:07:25 04:56:01 [INFO] Update id=158954943 is handled. Duration 436 ms by bot id=7912775711
+Jul 29 04:56:25 vmi2703391 python3[41319]: 29:07:25 04:56:25 [INFO] Update id=158954944 is handled. Duration 416 ms by bot id=7912775711
+Jul 29 04:56:30 vmi2703391 python3[41319]: 29:07:25 04:56:30 [INFO] Update id=158954945 is handled. Duration 427 ms by bot id=7912775711
+Jul 29 05:11:01 vmi2703391 systemd[1]: Stopping AlphaTango Arbitrage Bot...
+Jul 29 05:11:01 vmi2703391 python3[41319]: 29:07:25 05:11:01 [WARNING] Received SIGTERM signal
+Jul 29 05:11:01 vmi2703391 python3[41319]: 29:07:25 05:11:01 [INFO] Polling stopped for bot @ToluArbitrageBot id=7912775711 - 'ArbitrageBot'
+Jul 29 05:11:01 vmi2703391 python3[41319]: 29:07:25 05:11:01 [INFO] Polling stopped
+Jul 29 05:12:31 vmi2703391 systemd[1]: alphatango.service: State 'stop-sigterm' timed out. Killing.
+Jul 29 05:12:31 vmi2703391 systemd[1]: alphatango.service: Killing process 41319 (python3) with signal SIGKILL.
+Jul 29 05:12:31 vmi2703391 systemd[1]: alphatango.service: Killing process 41334 (python3) with signal SIGKILL.
+Jul 29 05:12:31 vmi2703391 systemd[1]: alphatango.service: Killing process 41335 (python3) with signal SIGKILL.
+Jul 29 05:12:31 vmi2703391 systemd[1]: alphatango.service: Main process exited, code=killed, status=9/KILL
+Jul 29 05:12:31 vmi2703391 systemd[1]: alphatango.service: Failed with result 'timeout'.
+Jul 29 05:12:31 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 29 05:12:31 vmi2703391 systemd[1]: alphatango.service: Consumed 6.703s CPU time.
+Jul 29 05:12:31 vmi2703391 systemd[1]: Started AlphaTango Arbitrage Bot.
+Jul 29 05:12:31 vmi2703391 python3[42160]: 29:07:25 05:12:31 [INFO] [STARTUP] Memulakan AlphaTango dalam mode LIVE...
+[2025-07-29 06:24:43] Restarting AlphaTango service...
+[2025-07-29 06:35:37] Restarting AlphaTango service...
+[2025-07-29 06:36:23] Restarting AlphaTango service...
+[2025-07-29 06:36:23] Restart complete. Status: deactivating
+
+📜 Recent Logs:

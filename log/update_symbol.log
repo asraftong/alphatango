@@ -1,0 +1,88 @@
+2025-07-27 13:10:38,964 - INFO - Updated symbol filters: 3182 symbols
+2025-07-27 13:15:53,394 - INFO - [UPDATE] Berjaya update symbol filters: 3182 simbol
+2025-07-27 13:16:13,321 - INFO - [UPDATE] Berjaya update symbol filters: 3182 simbol
+2025-07-27 13:26:22,332 - INFO - [UPDATE] Berjaya update symbol filters: 3182 simbol
+2025-07-27 13:31:55,299 - INFO - [UPDATE] Berjaya update symbol filters: 3182 simbol
+27:07:25 - INFO - [UPDATE] Berjaya update symbol filters: 3182 simbol
+27:07:25 - INFO - [UPDATE] Berjaya update symbol filters: 3182 simbol
+28:07:25 - INFO - [UPDATE] Berjaya update symbol filters: 3182 simbol
+Traceback (most recent call last):
+  File "/opt/alphatango/update_symbol_filters.py", line 4, in <module>
+    from binance.client import Client
+  File "/opt/alphatango/venv/lib/python3.10/site-packages/binance/__init__.py", line 9, in <module>
+    from binance.async_client import AsyncClient  # noqa
+  File "/opt/alphatango/venv/lib/python3.10/site-packages/binance/async_client.py", line 6, in <module>
+    import aiohttp
+  File "/opt/alphatango/venv/lib/python3.10/site-packages/aiohttp/__init__.py", line 6, in <module>
+    from .client import (
+  File "/opt/alphatango/venv/lib/python3.10/site-packages/aiohttp/client.py", line 36, in <module>
+    import attr
+  File "/opt/alphatango/venv/lib/python3.10/site-packages/attr/__init__.py", line 10
+    from . import executors.converters, exceptions, filters, setters, validators
+                           ^
+SyntaxError: invalid syntax
+29:07:25 - INFO - [UPDATE] Berjaya update symbol filters: 3182 simbol
+29:07:25 - INFO - [UPDATE] Berjaya update symbol filters: 0 simbol
+30:07:25 - INFO - [UPDATE] Berjaya update symbol filters: 0 simbol
+Traceback (most recent call last):
+  File "/opt/alphatango/venv/lib/python3.10/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "/opt/alphatango/venv/lib/python3.10/site-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "/usr/lib/python3.10/socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/alphatango/venv/lib/python3.10/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "/opt/alphatango/venv/lib/python3.10/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "/opt/alphatango/venv/lib/python3.10/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/opt/alphatango/venv/lib/python3.10/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "/opt/alphatango/venv/lib/python3.10/site-packages/urllib3/connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+  File "/opt/alphatango/venv/lib/python3.10/site-packages/urllib3/connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7f35b635fca0>: Failed to resolve 'api.binance.com' ([Errno -3] Temporary failure in name resolution)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/alphatango/venv/lib/python3.10/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "/opt/alphatango/venv/lib/python3.10/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "/opt/alphatango/venv/lib/python3.10/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.binance.com', port=443): Max retries exceeded with url: /api/v3/ping (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f35b635fca0>: Failed to resolve 'api.binance.com' ([Errno -3] Temporary failure in name resolution)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/alphatango/update_symbol_filters.py", line 23, in <module>
+    client = Client(api_key, api_secret)
+  File "/opt/alphatango/venv/lib/python3.10/site-packages/binance/client.py", line 51, in __init__
+    self.ping()
+  File "/opt/alphatango/venv/lib/python3.10/site-packages/binance/client.py", line 351, in ping
+    return self._get("ping")
+  File "/opt/alphatango/venv/lib/python3.10/site-packages/binance/client.py", line 183, in _get
+    return self._request_api("get", path, signed, version, **kwargs)
+  File "/opt/alphatango/venv/lib/python3.10/site-packages/binance/client.py", line 117, in _request_api
+    return self._request(method, uri, signed, **kwargs)
+  File "/opt/alphatango/venv/lib/python3.10/site-packages/binance/client.py", line 88, in _request
+    self.response = getattr(self.session, method)(uri, headers=headers, data=data, **kwargs)
+  File "/opt/alphatango/venv/lib/python3.10/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+  File "/opt/alphatango/venv/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/opt/alphatango/venv/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/opt/alphatango/venv/lib/python3.10/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.binance.com', port=443): Max retries exceeded with url: /api/v3/ping (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f35b635fca0>: Failed to resolve 'api.binance.com' ([Errno -3] Temporary failure in name resolution)"))
+01:08:25 - INFO - [UPDATE] Berjaya update symbol filters: 0 simbol
