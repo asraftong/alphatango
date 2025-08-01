@@ -1,2 +1,30 @@
+# Jangan upload fail config sensitif
+.env
+config.py
+
+# Cache dan bytecode Python
+__pycache__/
+*.py[cod]
+*.so
+
+# Fail log dan simpanan sementara
+*.log
+*.pid
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Direktori log dan PnL
+/log/
+pnl_logs/
+
+# Fail editor
+.vscode/
+*.idea/
+
+# Fail sistem
+.DS_Store
+Thumbs.db
 venv/
 venv/
