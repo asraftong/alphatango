@@ -1,0 +1,5 @@
+python-dotenv
+ccxt
+aiohttp
+requests
+python-telegram-bot

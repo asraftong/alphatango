@@ -1,0 +1,1682 @@
+# arbitrage_executor.py
+def detect_arbitrage(prices, threshold_percent=0.2):
+    opportunities = []
+    symbols = list(prices.keys())
+
+    for i in range(len(symbols)):
+        for j in range(i + 1, len(symbols)):
+            sym1 = symbols[i]
+            sym2 = symbols[j]
+            price1 = prices[sym1]
+            price2 = prices[sym2]
+
+            diff_percent = abs((price1 - price2) / price1) * 100
+            if diff_percent >= threshold_percent:
+                opportunities.append({
+                    "pair": f"{sym1} ↔ {sym2}",
+                    "price1": price1,
+                    "price2": price2,
+                    "diff_percent": round(diff_percent, 4),
+                    "profit_simulated": round(diff_percent / 100 * 10, 5)
+                })
+
+    return opportunities
+# arbitrage_logic.py
+
+import logging
+from config import Config
+from utils import format_float
+
+EXCHANGE_RATE_USD_TO_RM = 4.70
+
+def calculate_arbitrage_opportunities(order_books: dict, paths: list, filter_top_n: int = 0) -> list:
+    """
+    Kira peluang arbitrage segitiga sebenar.
+
+    paths = [
+        ('BTCUSDT', 'ETHBTC', 'ETHUSDT'),  # contoh: USDT ? BTC ? ETH ? USDT
+    ]
+    """
+    opportunities = []
+
+    for path in paths:
+        try:
+            sym1, sym2, sym3 = path
+            book1 = order_books.get(sym1)
+            book2 = order_books.get(sym2)
+            book3 = order_books.get(sym3)
+
+            if not all([book1, book2, book3]):
+                continue
+
+            amount_usdt = Config.INITIAL_BALANCE_USDT if Config.MODE == "SIMULATION" else 10.0
+
+            # Langkah 1: USDT ? BASE1 (contoh BTC), beli pada harga ask
+            base1_amount = amount_usdt / book1['ask']
+
+            # Langkah 2: BASE1 ? BASE2 (contoh ETH), beli pada harga ask
+            base2_amount = base1_amount / book2['ask']
+
+            # Langkah 3: BASE2 ? USDT, jual pada harga bid
+            final_usdt = base2_amount * book3['bid']
+
+            profit_usdt = final_usdt - amount_usdt
+            profit_rm = profit_usdt * EXCHANGE_RATE_USD_TO_RM
+
+            if profit_rm > 0:
+                opportunities.append({
+                    "path": f"{sym1} ? {sym2} ? {sym3}",
+                    "profit_rm": round(profit_rm, 4),
+                    "profit_usdt": round(profit_usdt, 4),
+                    "start_amount": format_float(amount_usdt),
+                    "end_amount": format_float(final_usdt),
+                    "symbols": [sym1, sym2, sym3],
+                })
+
+        except Exception as e:
+            logging.error(f"[ARBITRAGE LOGIC] Error on path {path}: {e}")
+            continue
+
+    if filter_top_n > 0:
+        opportunities = sorted(opportunities, key=lambda x: x['profit_rm'], reverse=True)[:filter_top_n]
+
+    return opportunities
+
+# Versi tidak digunakan kini, tapi biar kekal untuk backward compatibility
+def calculate_triangular_arbitrage(price_a: float, price_b: float, price_c: float) -> dict:
+    profit_percentage = ((price_a * price_b * price_c) - 1.0) * 100
+    return {
+        "profit_percentage": format_float(profit_percentage, 4),
+        "is_profitable": profit_percentage > 0.1
+    }
+[0;1;31m×[0m alphatango.service - AlphaTango Arbitrage Bot
+     Loaded: loaded (/etc/systemd/system/alphatango.service; enabled; vendor preset: enabled)
+     Active: [0;1;31mfailed[0m (Result: exit-code) since Thu 2025-07-24 08:11:14 CEST; 8min ago
+    Process: 923 ExecStart=/usr/bin/python3 /opt/alphatango/main.py [0;1;31m(code=exited, status=1/FAILURE)[0m
+   Main PID: 923 (code=exited, status=1/FAILURE)
+        CPU: 146ms
+
+Jul 24 08:11:13 vmi2703391 systemd[1]: [0;1;39m[0;1;31m[0;1;39malphatango.service: Main process exited, code=exited, status=1/FAILURE[0m
+Jul 24 08:11:13 vmi2703391 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185malphatango.service: Failed with result 'exit-code'.[0m
+Jul 24 08:11:14 vmi2703391 systemd[1]: alphatango.service: Scheduled restart job, restart counter is at 5.
+Jul 24 08:11:14 vmi2703391 systemd[1]: Stopped AlphaTango Arbitrage Bot.
+Jul 24 08:11:14 vmi2703391 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185malphatango.service: Start request repeated too quickly.[0m
+Jul 24 08:11:14 vmi2703391 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185malphatango.service: Failed with result 'exit-code'.[0m
+Jul 24 08:11:14 vmi2703391 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start AlphaTango Arbitrage Bot.[0m
+import json
+import os
+from datetime import datetime
+
+BALANCE_FILE = "sim_balance.json"
+DEFAULT_BALANCE = 1000.00  # RM1000 default modal
+
+def load_balance():
+    if not os.path.exists(BALANCE_FILE):
+        return {"balance": DEFAULT_BALANCE, "last_updated": str(datetime.utcnow())}
+    
+    try:
+        with open(BALANCE_FILE, "r") as f:
+            return json.load(f)
+    except Exception as e:
+        print(f"[WARNING] Failed to load balance: {e}")
+        return {"balance": DEFAULT_BALANCE, "last_updated": str(datetime.utcnow())}
+
+def save_balance(new_balance: float):
+    data = {
+        "balance": new_balance,
+        "last_updated": str(datetime.utcnow())
+    }
+    try:
+        with open(BALANCE_FILE, "w") as f:
+            json.dump(data, f, indent=2)
+    except Exception as e:
+        print(f"[ERROR] Failed to save balance: {e}")
+
+def simulate_trade_and_update_balance(profit_loss: float):
+    """
+    Simulate a trade outcome. `profit_loss` is in RM. Can be +ve or -ve.
+    """
+    data = load_balance()
+    new_balance = round(data["balance"] + profit_loss, 2)
+    save_balance(new_balance)
+    return new_balance
+# config.py
+
+import os
+from dotenv import load_dotenv
+
+# === Muatkan .env dari direktori projek ===
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+load_dotenv(os.path.join(BASE_DIR, '.env'))
+
+class Config:
+    # === Kunci API Binance ===
+    BINANCE_API_KEY = os.getenv("BINANCE_API_KEY", "").strip()
+    BINANCE_API_SECRET = os.getenv("BINANCE_API_SECRET", "").strip()
+
+    # === Konfigurasi Telegram ===
+    TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
+    TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "").strip()
+
+    # === Mod Operasi: SIMULATION atau LIVE ===
+    MODE = os.getenv("MODE", "SIMULATION").strip().upper()
+    if MODE not in ("SIMULATION", "LIVE"):
+        raise ValueError("[CONFIG] Config.MODE mesti sama ada 'SIMULATION' atau 'LIVE'.")
+
+    # === Parameter Simulasi (DEFAULT: USDT1000) ===
+    INITIAL_BALANCE_USDT = float(os.getenv("INITIAL_BALANCE_USDT", "1000") or 1000)
+    INITIAL_BALANCE_BUSD = float(os.getenv("INITIAL_BALANCE_BUSD", "1000") or 1000)
+    STARTING_BALANCE = INITIAL_BALANCE_USDT  # Gunakan USDT sebagai default utama
+
+    # === Parameter Sistem ===
+    QUOTE_CURRENCY = os.getenv("QUOTE_CURRENCY", "USDT").strip().upper()
+    PRICE_CHECK_INTERVAL = float(os.getenv("PRICE_CHECK_INTERVAL", "1.0") or 1.0)  # dalam saat
+    SCAN_INTERVAL = float(os.getenv("SCAN_INTERVAL", "5.0") or 5.0)  # dalam saat
+    PROFIT_THRESHOLD = float(os.getenv("PROFIT_THRESHOLD", "0.2") or 0.2)  # minimum profit dalam RM
+
+    # === WebSocket Binance (untuk streamer LIVE) ===
+    BINANCE_WS_BASE = "wss://stream.binance.com:9443"
+
+    # === Simbol untuk di-track oleh price streamer ===
+    SYMBOLS_TO_TRACK = os.getenv("SYMBOLS_TO_TRACK", "BTCUSDT,ETHUSDT,BNBUSDT")
+    SYMBOLS_TO_TRACK = [sym.strip().upper() for sym in SYMBOLS_TO_TRACK.split(",") if sym.strip()]
+
+    # === Direktori Fail Log dan PnL ===
+    LOG_DIR = os.getenv("LOG_DIR", "/opt/alphatango/log")
+    PNL_LOG_DIR = os.getenv("PNL_LOG_DIR", "/opt/alphatango/pnl_logs")
+
+    # === Mod Ciri Tambahan ===
+    ENABLE_LATENCY_TRACKING = os.getenv("ENABLE_LATENCY_TRACKING", "true").lower() == "true"
+    ENABLE_TELEGRAM_ALERTS = os.getenv("ENABLE_TELEGRAM_ALERTS", "true").lower() == "true"
+
+    # === Validasi apabila dalam LIVE mode ===
+    if MODE == "LIVE":
+        missing = []
+        if not BINANCE_API_KEY:
+            missing.append("BINANCE_API_KEY")
+        if not BINANCE_API_SECRET:
+            missing.append("BINANCE_API_SECRET")
+        if not TELEGRAM_BOT_TOKEN:
+            missing.append("TELEGRAM_BOT_TOKEN")
+        if not TELEGRAM_CHAT_ID:
+            missing.append("TELEGRAM_CHAT_ID")
+
+        if missing:
+            raise ValueError(f"[CONFIG] LIVE mode memerlukan nilai dalam .env: {', '.join(missing)}")
+import logging
+import time
+import requests
+from config import Config
+
+# Cache untuk info simbol
+symbol_info_cache = {}
+cache_expiry = 60 * 60  # 1 jam cache
+
+def get_symbol_info(symbol: str):
+    symbol = symbol.upper()
+    now = time.time()
+
+    if symbol in symbol_info_cache:
+        cached = symbol_info_cache[symbol]
+        if now - cached["timestamp"] < cache_expiry:
+            return cached["info"]
+
+    try:
+        url = f"{Config.BINANCE_API_BASE}/api/v3/exchangeInfo?symbol={symbol}"
+        response = requests.get(url, timeout=5)
+        response.raise_for_status()
+        data = response.json()
+
+        if "symbols" not in data or not data["symbols"]:
+            raise ValueError(f"Tiada info untuk simbol {symbol}")
+
+        info = data["symbols"][0]
+        symbol_info_cache[symbol] = {
+            "timestamp": now,
+            "info": info,
+        }
+        return info
+
+    except Exception as e:
+        logging.warning(f"[EXCHANGE] Gagal ambil info simbol {symbol}: {e}")
+        return {}
+
+def extract_filters(info: dict):
+    filters = {}
+    try:
+        for f in info.get("filters", []):
+            filters[f["filterType"]] = f
+    except Exception as e:
+        logging.warning(f"[EXCHANGE] Gagal extract filters: {e}")
+    return filters
+
+def get_symbol_filters(symbol: str) -> dict:
+    """
+    Fungsi ini digunakan oleh live_executor.py
+    untuk mendapatkan filter seperti LOT_SIZE dan MIN_NOTIONAL.
+    """
+    info = get_symbol_info(symbol)
+    if not info:
+        logging.warning(f"[EXCHANGE] Info simbol kosong untuk {symbol}")
+        return {}
+    return extract_filters(info)
+
+def get_lot_size(symbol: str) -> float:
+    filters = get_symbol_filters(symbol)
+    try:
+        return float(filters.get("LOT_SIZE", {}).get("stepSize", 0.0))
+    except Exception as e:
+        logging.warning(f"[EXCHANGE] Gagal dapatkan LOT_SIZE untuk {symbol}: {e}")
+        return 0.0
+
+def get_min_notional(symbol: str) -> float:
+    filters = get_symbol_filters(symbol)
+    try:
+        return float(filters.get("MIN_NOTIONAL", {}).get("minNotional", 0.0))
+    except Exception as e:
+        logging.warning(f"[EXCHANGE] Gagal dapatkan MIN_NOTIONAL untuk {symbol}: {e}")
+        return 0.0
+
+def get_tick_size(symbol: str) -> float:
+    filters = get_symbol_filters(symbol)
+    try:
+        return float(filters.get("PRICE_FILTER", {}).get("tickSize", 0.0))
+    except Exception as e:
+        logging.warning(f"[EXCHANGE] Gagal dapatkan TICK_SIZE untuk {symbol}: {e}")
+        return 0.0
+import asyncio
+import logging
+import ccxt.async_support as ccxt
+import os
+
+from alphatelegram.handlers import send_telegram_alert
+from streamers.price_streamer import get_prices
+from scanner.symbol_selector import get_arbitrage_symbols
+
+BINANCE_API_KEY = os.getenv("BINANCE_API_KEY")
+BINANCE_API_SECRET = os.getenv("BINANCE_API_SECRET")
+
+# Inisialisasi Binance
+binance = ccxt.binance({
+    'apiKey': BINANCE_API_KEY,
+    'secret': BINANCE_API_SECRET,
+    'enableRateLimit': True,
+    'options': {
+        'defaultType': 'spot',
+    }
+})
+
+async def execute_live_trade(opportunity):
+    try:
+        symbol = opportunity['symbol']
+        side = opportunity['side']
+        amount = opportunity['amount']
+        price = opportunity.get('price')
+
+        # Telegram log
+        msg = f"[EXECUTE LIVE] {side.upper()} {amount} {symbol} at price {price}"
+        logging.info(msg)
+        await send_telegram_alert(msg)
+
+        # Create real order
+        order = await binance.create_order(
+            symbol=symbol,
+            type='market',
+            side=side,
+            amount=amount
+        )
+
+        confirm_msg = f"[ORDER PLACED] ID: {order['id']} Status: {order['status']}"
+        logging.info(confirm_msg)
+        await send_telegram_alert(confirm_msg)
+
+    except Exception as e:
+        error_msg = f"[LIVE EXECUTION ERROR] {e}"
+        logging.exception(error_msg)
+        await send_telegram_alert(error_msg)
+
+async def start_live_trading_loop():
+    logging.info("AlphaTango LIVE loop started...")
+    await send_telegram_alert("🟢 AlphaTango LIVE mode started.")
+
+    while True:
+        try:
+            prices = await get_prices()
+            arbitrage_opps = await get_arbitrage_symbols(prices)
+
+            if arbitrage_opps:
+                for opp in arbitrage_opps:
+                    msg = f"[LIVE] Arbitrage Opportunity:\n{opp}"
+                    logging.info(msg)
+                    await send_telegram_alert(msg)
+
+                    await execute_live_trade(opp)
+
+            await asyncio.sleep(5)
+
+        except Exception as e:
+            err_msg = f"[LIVE ERROR] {e}"
+            logging.exception(err_msg)
+            await send_telegram_alert(err_msg)
+            await asyncio.sleep(10)
+
+# executor_live.py
+
+import logging
+from binance.client import Client
+from config import Config
+
+client = Client(api_key=Config.BINANCE_API_KEY, api_secret=Config.BINANCE_API_SECRET)
+
+def get_balance(asset: str) -> float:
+    try:
+        balance_info = client.get_asset_balance(asset=asset)
+        return float(balance_info['free'])
+    except Exception as e:
+        logging.error(f"[BINANCE ERROR] Gagal dapatkan baki {asset}: {e}")
+        return 0.0
+
+def place_market_order(symbol: str, side: str, quantity: float):
+    try:
+        order = client.create_order(
+            symbol=symbol,
+            side=side,
+            type='MARKET',
+            quantity=quantity
+        )
+        logging.info(f"[ORDER SUCCESS] {side} {quantity} {symbol}: {order}")
+        return order
+    except Exception as e:
+        logging.error(f"[ORDER FAILED] {side} {quantity} {symbol}: {e}")
+        return None
+
+def execute_trade(base: str, quote: str, amount_usdt: float):
+    try:
+        symbol = f"{base}{quote}"
+        price = float(client.get_symbol_ticker(symbol=symbol)['price'])
+        qty = round(amount_usdt / price, 6)  # sesuaikan precision
+
+        logging.info(f"[TRADE] Try BUY {qty} {base} at price {price}")
+
+        order = place_market_order(symbol=symbol, side="BUY", quantity=qty)
+        return order
+    except Exception as e:
+        logging.error(f"[TRADE ERROR] Failed to execute trade: {e}")
+        return None
+from config import Config
+
+if Config.MODE == "SIMULATION":
+    from executors.async_executor import AsyncExecutor
+elif Config.MODE == "LIVE":
+    from executors.live_executor import LiveExecutor
+else:
+    raise ValueError(f"Unknown mode: {Config.MODE}")
+
+def get_executor_instance(symbol: str, base_asset: str, quote_asset: str, expected_profit: float):
+    """
+    Kembalikan instance executor berdasarkan mode: SIMULATION atau LIVE.
+
+    Args:
+        symbol (str): Pasangan simbol.
+        base_asset (str): Aset utama.
+        quote_asset (str): Aset penukar.
+        expected_profit (float): Jangkaan keuntungan.
+
+    Returns:
+        Executor instance (AsyncExecutor atau LiveExecutor)
+    """
+    if Config.MODE == "SIMULATION":
+        return AsyncExecutor(symbol, base_asset, quote_asset, expected_profit)
+    elif Config.MODE == "LIVE":
+        return LiveExecutor(symbol, base_asset, quote_asset, expected_profit)
+import os
+
+FOLDER_MAP = {
+    'async_executor': 'executors.async_executor',
+    'simulation_executor': 'executors.simulation_executor',
+    'live_executor': 'executors.live_executor',
+    'converter': 'executors.converter',
+    'symbol_selector': 'scanner.symbol_selector',
+    'telegram_handler': 'handlers.telegram_handler',
+    'balance_handler': 'handlers.balance_handler',
+    'price_streamer': 'streamers.price_streamer',
+    'latency_tracker': 'streamers.latency_tracker',
+}
+
+def fix_imports_in_file(filepath):
+    try:
+        with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:
+            lines = f.readlines()
+    except Exception as e:
+        print(f'[✘] Gagal baca: {filepath} — {e}')
+        return
+
+    modified = False
+    new_lines = []
+    for line in lines:
+        new_line = line
+        for key, new_path in FOLDER_MAP.items():
+            if f'import {key}' in line or f'from {key}' in line:
+                new_line = new_line.replace(f'import {key}', f'import {new_path}')
+                new_line = new_line.replace(f'from {key}', f'from {new_path}')
+                modified = True
+        new_lines.append(new_line)
+
+    if modified:
+        try:
+            with open(filepath, 'w', encoding='utf-8') as f:
+                f.writelines(new_lines)
+            print(f'[✔] Updated: {filepath}')
+        except Exception as e:
+            print(f'[✘] Gagal tulis: {filepath} — {e}')
+
+
+for root, dirs, files in os.walk('.'):
+    # Skip folders we don't want to touch
+    if any(skip in root for skip in ['__pycache__', 'legacy', 'logs', 'pnl_logs']):
+        continue
+    for file in files:
+        if file.endswith('.py') and file != 'fix_imports.py':
+            fix_imports_in_file(os.path.join(root, file))
+import asyncio
+import logging
+from config import Config
+from scanner.symbol_selector import get_arbitrage_opportunity
+
+# Import executor ikut mode
+if Config.MODE == "SIMULATION":
+    from executors.async_executor import execute_arbitrage_simulation as execute_trade
+else:
+    from executors.live_executor import execute_live_trade as execute_trade
+
+async def force_check():
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(levelname)s - %(message)s'
+    )
+
+    logging.info(f"[FORCECHECK] Memulakan semakan paksa arbitrage dalam mode {Config.MODE}...")
+
+    opportunity = await get_arbitrage_opportunity()
+
+    if opportunity:
+        logging.info(f"[FORCECHECK] Peluang dijumpai: {opportunity['symbol']}")
+
+        # Tambah fallback harga untuk LIVE jika tiada harga disertakan oleh selector
+        if Config.MODE == "LIVE":
+            if 'price' not in opportunity or not opportunity['price']:
+                logging.warning("[FORCECHECK] Tiada 'price' dalam opportunity. Menambah harga dummy 58000.0")
+                opportunity['price'] = 58000.0  # fallback default (boleh ubah ikut simbol)
+
+            # Tambahan semakan minimum LIVE
+            if 'quantity' not in opportunity:
+                opportunity['quantity'] = 0.00004
+            if 'min_qty' not in opportunity:
+                opportunity['min_qty'] = 0.00001
+            if 'step_size' not in opportunity:
+                opportunity['step_size'] = 0.00001
+            if 'min_notional' not in opportunity:
+                opportunity['min_notional'] = 2.0
+            if 'profit_rm' not in opportunity:
+                opportunity['profit_rm'] = 0.10
+
+        await execute_trade(opportunity)
+
+    else:
+        logging.info("[FORCECHECK] Tiada peluang arbitrage ditemui.")
+
+if __name__ == "__main__":
+    asyncio.run(force_check())
+import os
+import json
+from binance.client import Client
+from dotenv import load_dotenv
+
+load_dotenv()
+
+client = Client(api_key=os.getenv("BINANCE_API_KEY"), api_secret=os.getenv("BINANCE_API_SECRET"))
+
+def fetch_all_symbols():
+    exchange_info = client.get_exchange_info()
+    usdt_symbols = []
+    for symbol_info in exchange_info['symbols']:
+        if symbol_info['status'] == 'TRADING' and symbol_info['quoteAsset'] == 'USDT':
+            usdt_symbols.append(symbol_info['symbol'])
+    return usdt_symbols
+
+if __name__ == "__main__":
+    all_symbols = fetch_all_symbols()
+
+    os.makedirs("data", exist_ok=True)
+    with open("data/all_symbols.json", "w") as f:
+        json.dump(all_symbols, f, indent=2)
+
+    print(f"{len(all_symbols)} simbol berjaya disimpan ke data/all_symbols.json")
+import datetime
+
+with open("/opt/alphatango/log/healthcheck.log", "a") as f:
+    f.write(f"[{datetime.datetime.now()}] OK\n")
+import os
+import asyncio
+from dotenv import load_dotenv
+
+load_dotenv()
+LOG_FILE = '/opt/alphatango/log/alphatango.err.log'
+LAST_LINE_FILE = '/opt/alphatango/log/.last_error_line'
+
+TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+
+async def send_telegram(message):
+    import aiohttp
+    async with aiohttp.ClientSession() as session:
+        url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
+        await session.post(url, json={"chat_id": TELEGRAM_CHAT_ID, "text": message})
+
+def read_last_line():
+    try:
+        with open(LAST_LINE_FILE, 'r') as f:
+            return int(f.read().strip())
+    except:
+        return 0
+
+def write_last_line(line_num):
+    with open(LAST_LINE_FILE, 'w') as f:
+        f.write(str(line_num))
+
+async def main():
+    if not os.path.exists(LOG_FILE):
+        return
+    last_line = read_last_line()
+    with open(LOG_FILE, 'r') as f:
+        lines = f.readlines()
+
+    new_lines = lines[last_line:]
+    errors = [line for line in new_lines if "ERROR" in line or "Exception" in line]
+
+    if errors:
+        await send_telegram(f"🚨 Log Monitor Detected Errors:\n{''.join(errors[-3:])[-300:]}")
+
+    write_last_line(len(lines))
+
+asyncio.run(main())
+import asyncio
+import logging
+import os
+import signal
+from datetime import datetime
+from dotenv import load_dotenv
+from config import Config
+from alphatelegram.alerts import send_telegram_alert
+from alphatelegram.commands import setup_command_handlers
+
+os.chdir("/opt/alphatango")
+load_dotenv()
+
+# === Logging setup ===
+os.makedirs("log", exist_ok=True)
+log_file = os.path.join("log", "alphatango.log")
+
+class CustomFormatter(logging.Formatter):
+    def formatTime(self, record, datefmt=None):
+        dt = datetime.fromtimestamp(record.created)
+        return dt.strftime("%d:%m:%y %H:%M:%S")
+
+formatter = CustomFormatter("%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO,
+    handlers=[logging.FileHandler(log_file), logging.StreamHandler()]
+)
+for handler in logging.getLogger().handlers:
+    handler.setFormatter(formatter)
+
+logging.info(f"[STARTUP] Memulakan AlphaTango dalam mode {Config.MODE}...")
+
+Executor = None
+start_price_stream = None
+
+try:
+    if Config.MODE == "SIMULATION":
+        from executors.async_executor import AsyncExecutor as Executor
+    elif Config.MODE == "LIVE":
+        from executors.live_executor import LiveExecutor as Executor
+        from streamers.price_streamer import start_price_stream
+        from filters.symbol_filter import filter_live_symbols
+    else:
+        raise ValueError(f"MODE tidak dikenali: {Config.MODE}")
+except ImportError as e:
+    logging.exception(f"[IMPORT ERROR] {e}")
+    asyncio.run(send_telegram_alert(f"? Gagal import modul penting:\n<code>{e}</code>"))
+    raise ImportError(f"Gagal import executor/streamer untuk mod {Config.MODE}: {e}")
+
+# === GLOBAL STOP FLAG ===
+stop_flag = asyncio.Event()
+
+# Tangkap signal TERM dan INT
+def handle_signal(signame):
+    logging.warning(f"[SIGNAL] Menerima signal {signame}. Menyediakan shutdown...")
+    stop_flag.set()
+
+for sig in ('SIGINT', 'SIGTERM'):
+    signal.signal(getattr(signal, sig), lambda signum, frame, s=sig: handle_signal(s))
+
+# Fungsi utama arbitrage
+async def arbitrage_main_loop():
+    from scanner.symbol_selector import get_arbitrage_opportunity
+
+    # ===== INISIALISASI EXECUTOR =====
+    if Config.MODE == "LIVE":
+        # Tapiskan simbol sebelum sambung WebSocket
+        filtered_symbols = await filter_live_symbols(Config.SYMBOLS)
+        if not filtered_symbols:
+            logging.warning("[LIVE] Tiada simbol layak selepas tapisan. Keluar.")
+            await send_telegram_alert("?? Tiada simbol layak untuk LIVE selepas tapisan.")
+            return
+        price_streamer = await start_price_stream(filtered_symbols)
+        executor = Executor(price_streamer=price_streamer)
+    else:
+        executor = Executor()
+
+    logging.info(f"[SYSTEM] AlphaTango dimulakan dalam mode {Config.MODE}")
+    await send_telegram_alert(f"?? AlphaTango dimulakan dalam <b>{Config.MODE}</b> mode.")
+
+    while not stop_flag.is_set():
+        try:
+            opportunity = await get_arbitrage_opportunity()
+            if opportunity:
+                symbol = opportunity["symbol"]
+                base = opportunity["base"]
+                quote = opportunity["quote"]
+                profit = opportunity["profit_rm"]
+
+                logging.info(f"[OPPORTUNITY] {symbol} | Base: {base} | Quote: {quote} | Profit: {profit:.4f} RM")
+                await executor.execute_trade(opportunity)
+
+            await asyncio.sleep(Config.SCAN_INTERVAL)
+
+        except asyncio.CancelledError:
+            logging.info("[INFO] Loop arbitrage dibatalkan.")
+            break
+        except Exception as e:
+            error_msg = f"[MAIN LOOP ERROR] {type(e).__name__}: {e}"
+            logging.exception(error_msg)
+            await send_telegram_alert(f"?? Ralat dalam AlphaTango:\n<code>{error_msg}</code>")
+            await asyncio.sleep(5)
+
+# Kombinasi Telegram + arbitrage
+async def combined_main():
+    from aiogram import Bot, Dispatcher
+    from aiogram.client.default import DefaultBotProperties
+    from alphatelegram.handlers import register_handlers
+
+    bot = Bot(token=Config.TELEGRAM_BOT_TOKEN, default=DefaultBotProperties(parse_mode="HTML"))
+    dp = Dispatcher()
+
+    setup_command_handlers(dp)
+    register_handlers(dp)
+
+    logging.info("[TELEGRAM] Telegram bot dimulakan...")
+
+    try:
+        await asyncio.gather(
+            dp.start_polling(bot),
+            arbitrage_main_loop(),
+            stop_flag.wait()  # Tunggu signal shutdown
+        )
+    finally:
+        logging.warning("[SHUTDOWN] Menutup bot dan sambungan...")
+        await bot.session.close()
+
+if __name__ == "__main__":
+    try:
+        asyncio.run(combined_main())
+    except Exception as e:
+        logging.exception(f"[FATAL MAIN] {e}")
+        try:
+            asyncio.run(send_telegram_alert(f"? Fatal error dalam main.py:\n<code>{e}</code>"))
+        except:
+            pass
+import asyncio
+import logging
+
+async def run_simulation_mode():
+    logging.info("Running in SIMULATION mode.")
+    while True:
+        logging.info("Simulated arbitrage scanning...")
+        await asyncio.sleep(5)  # gantikan nanti dengan logic AlphaTango sebenar
+
+async def run_live_mode():
+    logging.info("Running in LIVE mode.")
+    while True:
+        logging.info("Live arbitrage scanning...")
+        await asyncio.sleep(5)  # gantikan nanti dengan logic AlphaTango sebenar
+import csv, os
+from datetime import datetime
+
+def log_trade_to_csv(symbol, timestamp, profit_rm, balance_rm):
+    d = datetime.now().strftime("%Y-%m-%d")
+    f = f"pnl_logs/{d}.csv"
+    os.makedirs("pnl_logs", exist_ok=True)
+    write_header = not os.path.isfile(f)
+    with open(f, 'a', newline='') as file:
+        w = csv.writer(file)
+        if write_header:
+            w.writerow(['symbol', 'timestamp', 'profit_rm', 'balance_rm'])
+        w.writerow([symbol, timestamp, profit_rm, balance_rm])
+import csv
+import os
+import logging
+from datetime import datetime
+
+from config import Config
+from alphatelegram.alerts import send_error_alert  # <-- Path dikemas kini
+
+
+def log_trade_to_csv(symbol: str, profit_rm: float, balance_rm: float):
+    """
+    Log dagangan ke dalam fail CSV harian mengikut format:
+    Timestamp, Symbol, Profit (RM), Balance (RM)
+    """
+    try:
+        date_str = datetime.now().strftime("%Y-%m-%d")
+        log_dir = Config.LOG_DIR_PNL if hasattr(Config, "LOG_DIR_PNL") else "pnl_logs"
+        os.makedirs(log_dir, exist_ok=True)
+        filename = os.path.join(log_dir, f"{date_str}.csv")
+        file_exists = os.path.isfile(filename)
+
+        with open(filename, mode="a", newline="") as file:
+            writer = csv.writer(file)
+            if not file_exists:
+                writer.writerow(["Timestamp", "Symbol", "Profit (RM)", "Balance (RM)"])
+            writer.writerow([
+                datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                symbol,
+                round(profit_rm, 2),
+                round(balance_rm, 2),
+            ])
+    except Exception as e:
+        logging.error(f"[PNL LOGGING] Gagal log PnL: {e}")
+        try:
+            send_error_alert(f"[PNL LOGGING] Gagal log PnL: {e}")
+        except Exception as alert_err:
+            logging.error(f"[PNL LOGGING] Gagal hantar alert Telegram: {alert_err}")
+
+
+def is_pnl_within_threshold(profit: float) -> bool:
+    """
+    Semak sama ada profit semasa berada dalam julat dibenarkan.
+    """
+    return Config.PNL_THRESHOLD_MIN <= profit <= Config.PNL_THRESHOLD_MAX
+
+
+def get_total_pnl() -> float:
+    """
+    Jumlahkan semua nilai 'Profit (RM)' daripada fail-fail CSV dalam folder pnl_logs.
+    """
+    total_pnl = 0.0
+    log_dir = Config.LOG_DIR_PNL if hasattr(Config, "LOG_DIR_PNL") else "pnl_logs"
+
+    try:
+        if not os.path.isdir(log_dir):
+            return 0.0
+
+        for filename in os.listdir(log_dir):
+            if filename.endswith(".csv"):
+                filepath = os.path.join(log_dir, filename)
+                with open(filepath, mode="r") as file:
+                    reader = csv.DictReader(file)
+                    for row in reader:
+                        try:
+                            total_pnl += float(row["Profit (RM)"])
+                        except (ValueError, KeyError):
+                            continue
+    except Exception as e:
+        logging.error(f"[PNL TOTAL] Gagal kira jumlah PnL: {e}")
+        try:
+            send_error_alert(f"[PNL TOTAL] Gagal kira jumlah PnL: {e}")
+        except Exception as alert_err:
+            logging.error(f"[PNL TOTAL] Gagal hantar alert Telegram: {alert_err}")
+    
+    return round(total_pnl, 2)
+import os
+import subprocess
+import datetime
+from config import Config
+
+def get_system_status():
+    try:
+        result = subprocess.run(
+            ['systemctl', 'is-active', 'alphatango'],
+            capture_output=True,
+            text=True
+        )
+        return result.stdout.strip()
+    except Exception as e:
+        return f"Error checking service: {e}"
+
+def get_uptime():
+    try:
+        output = subprocess.check_output(['uptime', '-p']).decode().strip()
+        return output
+    except:
+        return "Unknown"
+
+def get_memory_usage():
+    try:
+        output = subprocess.check_output(['ps', '-o', 'rss=', '-p', str(os.getpid())]).decode().strip()
+        mem_mb = int(output) / 1024
+        return f"{mem_mb:.2f} MB"
+    except:
+        return "Unknown"
+
+def get_latest_pnl_log():
+    try:
+        logs_dir = os.path.join(Config.BASE_DIR, 'pnl_logs')
+        files = sorted(os.listdir(logs_dir), reverse=True)
+        if files:
+            latest_file = files[0]
+            latest_path = os.path.join(logs_dir, latest_file)
+            with open(latest_path, 'r') as f:
+                lines = f.readlines()
+                if len(lines) > 1:
+                    return lines[-1].strip()
+        return "No PnL record."
+    except:
+        return "PnL log not found."
+
+def get_current_balance():
+    try:
+        with open(os.path.join(Config.BASE_DIR, 'balance.txt'), 'r') as f:
+            return f.read().strip()
+    except:
+        return "Balance not found."
+
+def generate_status_message():
+    status = get_system_status()
+    uptime = get_uptime()
+    memory = get_memory_usage()
+    balance = get_current_balance()
+    pnl = get_latest_pnl_log()
+
+    return (
+        f"📊 *AlphaTango Bot Status*\n"
+        f"• Service: `{status}`\n"
+        f"• Uptime: `{uptime}`\n"
+        f"• Memory: `{memory}`\n"
+        f"• Balance: `{balance}`\n"
+        f"• Last PnL: `{pnl}`\n"
+        f"\n⏳ Time: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+    )
+import json
+import os
+from collections import Counter
+
+TOP_SYMBOLS_FILE = "data/top_symbols.json"
+OPPORTUNITY_LOG = "data/opportunity_history.json"
+TOP_N = 10
+
+def update_top_symbols():
+    if not os.path.exists(OPPORTUNITY_LOG):
+        return
+
+    try:
+        with open(OPPORTUNITY_LOG, "r") as f:
+            opportunities = json.load(f)
+
+        symbols = [op["symbol"] for op in opportunities if "symbol" in op]
+        counter = Counter(symbols)
+        top_symbols = [symbol for symbol, _ in counter.most_common(TOP_N)]
+
+        with open(TOP_SYMBOLS_FILE, "w") as f:
+            json.dump(top_symbols, f, indent=2)
+
+    except Exception as e:
+        print(f"[TOP SYMBOLS] Gagal update top symbols: {e}")
+
+def get_top_symbols():
+    if not os.path.exists(TOP_SYMBOLS_FILE):
+        return []
+
+    try:
+        with open(TOP_SYMBOLS_FILE, "r") as f:
+            return json.load(f)
+    except Exception as e:
+        print(f"[TOP SYMBOLS] Gagal baca top symbols: {e}")
+        return []
+import csv
+import os
+from datetime import datetime
+
+def log_trade_to_csv(trade_data: dict, balance: float):
+    date_str = datetime.now().strftime('%Y-%m-%d')
+    filename = f"pnl_logs/{date_str}.csv"
+    file_exists = os.path.isfile(filename)
+
+    os.makedirs("pnl_logs", exist_ok=True)  # Pastikan folder wujud
+
+    with open(filename, mode='a', newline='') as file:
+        writer = csv.writer(file)
+        if not file_exists:
+            writer.writerow(['Time', 'Symbol', 'Profit(RM)', 'New Balance(RM)'])
+
+        writer.writerow([
+            datetime.now().strftime('%H:%M:%S'),
+            trade_data.get("symbol", "UNKNOWN"),
+            f"{trade_data.get('profit', 0):.2f}",
+            f"{balance:.2f}"
+        ])
+import json
+import os
+import logging
+from binance.client import Client
+from dotenv import load_dotenv
+import asyncio
+import aiohttp
+
+# Load .env
+load_dotenv()
+
+# Setup logging dengan format DD:MM:YY
+logging.basicConfig(
+    filename='/opt/alphatango/log/update_symbol.log',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    datefmt='%d:%m:%y'
+)
+
+# Binance API
+api_key = os.getenv("BINANCE_API_KEY")
+api_secret = os.getenv("BINANCE_API_SECRET")
+client = Client(api_key, api_secret)
+
+# Telegram Config
+TELEGRAM_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+
+async def send_telegram_alert(message: str):
+    if not TELEGRAM_TOKEN or not TELEGRAM_CHAT_ID:
+        logging.warning("Telegram config not set. Skipping alert.")
+        return
+    url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
+    payload = {"chat_id": TELEGRAM_CHAT_ID, "text": message}
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.post(url, json=payload) as resp:
+                if resp.status != 200:
+                    logging.warning(f"Telegram alert failed with status {resp.status}")
+    except Exception as e:
+        logging.error(f"Telegram alert error: {str(e)}")
+
+def fetch_symbol_filters():
+    exchange_info = client.get_exchange_info()
+    symbols_data = {}
+
+    for symbol_info in exchange_info['symbols']:
+        symbol = symbol_info['symbol']
+        filters = {f['filterType']: f for f in symbol_info['filters']}
+        symbols_data[symbol] = {
+            'LOT_SIZE': filters.get('LOT_SIZE', {}),
+            'MIN_NOTIONAL': filters.get('MIN_NOTIONAL', {})
+        }
+
+    with open('/opt/alphatango/symbol_filters.json', 'w') as f:
+        json.dump(symbols_data, f, indent=2)
+
+    logging.info(f"[UPDATE] Berjaya update symbol filters: {len(symbols_data)} simbol")
+
+if __name__ == "__main__":
+    try:
+        fetch_symbol_filters()
+    except Exception as e:
+        error_msg = f"[ERROR] Gagal update symbol filters: {str(e)}"
+        logging.error(error_msg)
+        asyncio.run(send_telegram_alert(error_msg))
+# utils.py
+
+import math
+import requests
+import logging
+import os
+import csv
+from datetime import datetime
+from decimal import Decimal, ROUND_DOWN
+from binance.client import Client
+from dotenv import load_dotenv
+
+# === Muatkan .env ===
+load_dotenv()
+
+# ========================= ⚙️ PENGIRAAN =========================
+
+def round_down(value: float, decimals: int = 8) -> float:
+    """Bundarkan nilai ke bawah mengikut bilangan perpuluhan."""
+    factor = 10 ** decimals
+    return math.floor(value * factor) / factor
+
+def format_float(value: float, precision: int = 4) -> str:
+    """Format float kepada string dengan bilangan perpuluhan tetap."""
+    return f"{value:.{precision}f}"
+
+def round_quantity_to_step_size(quantity: float, step_size: float) -> float:
+    """Bundarkan kuantiti kepada stepSize sah berdasarkan Binance."""
+    precision = int(round(-Decimal(str(step_size)).as_tuple().exponent))
+    rounded_qty = float(
+        Decimal(str(quantity)).quantize(Decimal(str(step_size)), rounding=ROUND_DOWN)
+    )
+    return round(rounded_qty, precision)
+
+# ========================= 💱 HARGA & SIMBOL =========================
+
+def convert_symbol(symbol: str) -> str:
+    """Tukar simbol 'BTC/USDT' kepada 'BTCUSDT'."""
+    return symbol.replace("/", "").upper()
+
+def get_price(symbol: str) -> float:
+    """Dapatkan harga semasa untuk simbol dari Binance REST API."""
+    try:
+        url = f"https://api.binance.com/api/v3/ticker/price?symbol={symbol.upper()}"
+        headers = {"User-Agent": "AlphaTangoBot/1.0"}
+        response = requests.get(url, headers=headers, timeout=5)
+        response.raise_for_status()
+        data = response.json()
+        return float(data["price"])
+    except Exception as e:
+        logging.error(f"[PRICE] Gagal dapatkan harga {symbol}: {e}")
+        return 0.0
+
+def get_symbol_info(symbol: str) -> dict:
+    """Ambil maklumat simbol dari Binance (tick size, step size, etc)."""
+    try:
+        client = get_binance_client()
+        return client.get_symbol_info(symbol.upper()) or {}
+    except Exception as e:
+        logging.error(f"[INFO] Gagal dapatkan info simbol {symbol}: {e}")
+        return {}
+
+# ========================= 🕒 MASA & LOGGING =========================
+
+def get_current_timestamp() -> str:
+    """Dapatkan timestamp dalam format YYYY-MM-DD HH:MM:SS"""
+    return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+def log_trade_to_csv(trade_info: dict, log_dir: str = "/opt/alphatango/pnl_logs"):
+    """
+    Log maklumat trade ke dalam fail CSV harian.
+    trade_info mestilah dict yang mengandungi: timestamp, symbols, profit, balance.
+    """
+    os.makedirs(log_dir, exist_ok=True)
+    filename = os.path.join(log_dir, f"{datetime.now().strftime('%Y-%m-%d')}.csv")
+    file_exists = os.path.isfile(filename)
+
+    try:
+        with open(filename, mode="a", newline="") as file:
+            writer = csv.writer(file)
+            if not file_exists:
+                writer.writerow(["Timestamp", "Symbol", "Profit (RM)", "Balance (RM)"])
+            writer.writerow([
+                trade_info.get("timestamp", get_current_timestamp()),
+                trade_info.get("symbols", "UNKNOWN"),
+                round(float(trade_info.get("profit", 0.0)), 4),
+                round(float(trade_info.get("balance", 0.0)), 2)
+            ])
+    except Exception as e:
+        logging.error(f"[LOG] Gagal log ke CSV: {e}")
+
+# ========================= 🔐 KLIENT BINANCE =========================
+
+def get_binance_client() -> Client:
+    """Bina klien Binance dari .env"""
+    api_key = os.getenv("BINANCE_API_KEY")
+    api_secret = os.getenv("BINANCE_API_SECRET")
+
+    if not api_key or not api_secret:
+        raise ValueError("API key/secret Binance tiada dalam environment.")
+
+    client = Client(api_key, api_secret)
+    try:
+        client.ping()  # pastikan sambungan sah
+    except Exception as e:
+        logging.error(f"[CLIENT] Gagal sambung ke Binance API: {e}")
+        raise
+    return client
+
+# ========================= 💰 BAKI AKAUN =========================
+
+def get_asset_balance(asset: str) -> float:
+    """Dapatkan baki bebas untuk aset tertentu."""
+    try:
+        client = get_binance_client()
+        balance = client.get_asset_balance(asset.upper())
+        return float(balance['free']) if balance else 0.0
+    except Exception as e:
+        logging.error(f"[BALANCE] Gagal dapatkan baki {asset}: {e}")
+        return 0.0
+
+def get_usdt_balance() -> float:
+    """Alias untuk dapatkan baki USDT sahaja."""
+    return get_asset_balance("USDT")
+
+def get_total_balance_in_usdt() -> float:
+    """
+    Anggarkan jumlah semua aset dimiliki dalam nilai USDT.
+    Termasuk baki bebas dan terkunci (free + locked).
+    """
+    try:
+        client = get_binance_client()
+        account_info = client.get_account()
+        total = Decimal("0.0")
+
+        for asset in account_info.get("balances", []):
+            free_amt = Decimal(asset["free"])
+            locked_amt = Decimal(asset["locked"])
+            total_amt = free_amt + locked_amt
+
+            if total_amt == 0:
+                continue
+
+            asset_name = asset["asset"]
+            if asset_name == "USDT":
+                total += total_amt
+            else:
+                symbol = f"{asset_name}USDT"
+                price = Decimal(str(get_price(symbol)))
+                if price > 0:
+                    total += total_amt * price
+
+        return float(total.quantize(Decimal("0.01")))
+    except Exception as e:
+        logging.error(f"[BALANCE] Gagal kira jumlah baki dalam USDT: {e}")
+        return 0.0
+import asyncio
+import logging
+from binance import AsyncClient
+from alphatelegram.handlers import send_telegram_alert
+
+async def get_order_books_for_symbols(client: AsyncClient, symbols: list):
+    """
+    Ambil order book (buku pesanan) untuk senarai simbol secara asynchronous
+    menggunakan Binance AsyncClient.
+
+    Args:
+        client (AsyncClient): Instance Binance AsyncClient.
+        symbols (list): Senarai simbol (contoh: ["BTCUSDT", "ETHUSDT"]).
+
+    Returns:
+        dict: Dictionary simbol sebagai key, dan order book dict sebagai value.
+    """
+    try:
+        tasks = [client.get_order_book(symbol=symbol) for symbol in symbols]
+        order_books = await asyncio.gather(*tasks, return_exceptions=True)
+
+        results = {}
+        for symbol, result in zip(symbols, order_books):
+            if isinstance(result, Exception):
+                logging.error(f"[ORDER BOOK] Gagal dapat order book untuk {symbol}: {result}")
+                continue
+            results[symbol] = result
+
+        return results
+    except Exception as e:
+        logging.error(f"[ERROR] get_order_books_for_symbols: {e}")
+        return {}
+
+async def get_balance(client: AsyncClient, asset: str) -> float:
+    try:
+        info = await client.get_asset_balance(asset=asset)
+        if info is None or "free" not in info:
+            return 0.0
+        return float(info['free'])
+    except Exception as e:
+        logging.error(f"[BALANCE] Gagal dapatkan baki {asset}: {e}")
+        return 0.0
+
+async def place_market_order(client: AsyncClient, symbol: str, side: str, quantity: float):
+    try:
+        order = await client.create_order(
+            symbol=symbol,
+            side=side,
+            type="MARKET",
+            quantity=quantity
+        )
+        return order
+    except Exception as e:
+        await send_telegram_alert(f"? Gagal buat order {side} {symbol}: {e}")
+        raise e
+
+async def convert_max_bnb_to_usdt(retain_percent=40.0):
+    """
+    Tukar maksimum BNB ke USDT kecuali simpan baki retain_percent (contoh: 40%).
+
+    Args:
+        retain_percent (float): Peratus baki BNB yang hendak disimpan.
+
+    Log Telegram dan juga log console.
+    """
+    try:
+        client = await AsyncClient.create(
+            api_key=None,  # Otomatik ambil dari env
+            api_secret=None
+        )
+
+        bnb_balance = await get_balance(client, 'BNB')
+        retained = bnb_balance * retain_percent / 100
+        amount_to_convert = bnb_balance - retained
+
+        if amount_to_convert < 0.01:
+            await send_telegram_alert(f"? Gagal: baki BNB tidak mencukupi. Ada {bnb_balance:.4f} BNB sahaja.")
+            await client.close_connection()
+            return
+
+        # Binance perlu quantity dengan pembundaran ikut step size, lebih baik round 5 desimal
+        quantity_to_sell = float(f"{amount_to_convert:.5f}")
+
+        order = await place_market_order(client, "BNBUSDT", "SELL", quantity_to_sell)
+
+        logging.info(f"[CONVERT] Tukar {quantity_to_sell:.5f} BNB ke USDT (simpan {retain_percent}%)")
+        await send_telegram_alert(f"? Tukar {quantity_to_sell:.5f} BNB ke USDT (simpan {retain_percent}%)")
+
+        await client.close_connection()
+
+    except Exception as e:
+        logging.exception(f"[CONVERT] Ralat semasa tukar BNB: {e}")
+        await send_telegram_alert(f"? Gagal tukar BNB: {e}")
+
+# Contoh run standalone
+if __name__ == "__main__":
+    import os
+    from dotenv import load_dotenv
+    load_dotenv()
+
+    async def main():
+        api_key = os.getenv("BINANCE_API_KEY")
+        api_secret = os.getenv("BINANCE_API_SECRET")
+
+        client = await AsyncClient.create(api_key, api_secret)
+        symbols = ["BTCUSDT", "ETHUSDT", "BNBUSDT"]
+        order_books = await get_order_books_for_symbols(client, symbols)
+        for sym, ob in order_books.items():
+            print(f"\nOrder book for {sym}:")
+            print(ob)
+        await convert_max_bnb_to_usdt(retain_percent=40.0)
+        await client.close_connection()
+
+    asyncio.run(main())
+import logging
+from config import Config
+from alphatelegram.alerts import send_telegram_alert
+
+def get_symbols_for_arbitrage():
+    try:
+        # Ini hanya contoh logik pemilihan simbol
+        # Gantikan dengan logik sebenar pemilihan simbol arbitrage
+        selected_symbols = []
+
+        # Contoh logik mudah
+        for symbol in Config.SYMBOL_LIST:
+            if "USDT" in symbol:
+                selected_symbols.append(symbol)
+
+        if not selected_symbols:
+            msg = "[SYMBOL SELECTOR] Tiada simbol layak ditemui untuk arbitrage."
+            logging.warning(msg)
+            send_telegram_alert(msg)
+
+        return selected_symbols
+
+    except Exception as e:
+        logging.error(f"[SYMBOL SELECTOR] Ralat semasa pemilihan simbol: {e}")
+        try:
+            send_telegram_alert(f"[SYMBOL SELECTOR] Ralat: {e}")
+        except Exception as alert_err:
+            logging.error(f"[SYMBOL SELECTOR] Gagal hantar alert Telegram: {alert_err}")
+        return []
+import logging
+from config import Config
+from alphatelegram.alerts import send_telegram_alert
+from pnl_protection import is_pnl_within_threshold
+from utils_async import get_order_books_for_symbols
+from arbitrage_logic import calculate_triangular_arbitrage
+from utils import format_float
+from simulator import simulate_trade_and_update_balance
+
+# Import fungsi execute_live_trade hanya jika dalam mod LIVE
+if Config.MODE == "LIVE":
+    try:
+        from executors.live_executor import execute_live_trade
+    except ImportError as e:
+        logging.error(f"[IMPORT ERROR] Gagal import executors.live_executor: {e}")
+        execute_live_trade = None
+else:
+    execute_live_trade = None
+
+class AsyncExecutor:
+    def __init__(self, symbols: list, expected_profit: float, client=None):
+        self.symbols = symbols
+        self.expected_profit = expected_profit
+        self.balance_rm = Config.INITIAL_BALANCE_USDT
+        self.balances = {}
+        self.client = client
+
+    async def execute_trade(self):
+        try:
+            logging.info(f"[EXECUTOR] Mula semak peluang arbitrage untuk {self.symbols}")
+
+            # 1. Dapatkan order books
+            order_books = await get_order_books_for_symbols(self.symbols, {})
+
+            if not all(symbol in order_books for symbol in self.symbols):
+                logging.warning("[EXECUTOR] Tidak semua simbol mempunyai data order book.")
+                return
+
+            # 2. Ekstrak harga dari order books
+            price_a = float(order_books[self.symbols[0]]['asks'][0][0])
+            price_b = float(order_books[self.symbols[1]]['bids'][0][0])
+            price_c = float(order_books[self.symbols[2]]['bids'][0][0])
+
+            # 3. Kira keuntungan berpotensi
+            profit_rm = calculate_triangular_arbitrage(price_a, price_b, price_c)
+
+            if not is_pnl_within_threshold(profit_rm):
+                logging.warning(f"[EXECUTOR] PnL RM{format_float(profit_rm)} melebihi threshold. Trade dibatalkan.")
+                return
+
+            logging.info(f"[EXECUTOR] Peluang arbitrage: Untung RM{format_float(profit_rm)}")
+
+            best_opp = {
+                'symbol_a': self.symbols[0],
+                'symbol_b': self.symbols[1],
+                'symbol_c': self.symbols[2],
+                'price_a': price_a,
+                'price_b': price_b,
+                'price_c': price_c,
+                'profit_rm': profit_rm
+            }
+
+            # ================================
+            # === SIMULATION MODE LOGIC ======
+            # ================================
+            if Config.MODE == "SIMULATION":
+                logging.info("[SIMULATION] Menjalankan simulasi dagangan...")
+
+                success, new_balance, profit = await simulate_trade_and_update_balance(
+                    best_opp, self.balance_rm, self.balances
+                )
+
+                if success:
+                    self.balance_rm = new_balance
+                    logging.info(f"[SIMULATION] Berjaya. Untung: RM{format_float(profit)}, Baki baru: RM{format_float(new_balance)}")
+                else:
+                    logging.warning("[SIMULATION] Trade gagal atau tidak menguntungkan.")
+
+            # ===========================
+            # === LIVE MODE LOGIC =======
+            # ===========================
+            elif Config.MODE == "LIVE":
+                if execute_live_trade is None:
+                    logging.error("[LIVE] Fungsi execute_live_trade tidak tersedia!")
+                    await send_telegram_alert("?? [ALERT] LIVE mode aktif tetapi executor tidak tersedia!")
+                    return
+
+                logging.info("[LIVE] Menjalankan dagangan sebenar...")
+
+                success, executed_price, real_profit = await execute_live_trade(
+                    best_opp, self.client
+                )
+
+                if success:
+                    logging.info(f"[LIVE] Trade berjaya! Harga akhir: {executed_price}, Untung: RM{format_float(real_profit)}")
+                else:
+                    logging.warning("[LIVE] Trade gagal atau tidak menguntungkan.")
+
+            else:
+                logging.warning(f"[EXECUTOR] Mod tidak dikenali: {Config.MODE}")
+
+        except Exception as e:
+            logging.error(f"[ERROR] Ralat semasa AsyncExecutor: {e}", exc_info=True)
+            await send_telegram_alert(f"?? [ALPHATANGO ERROR] AsyncExecutor exception:\n{e}")
+
+# Fungsi tambahan untuk akses baki simulasi (digunakan oleh commands.py)
+def get_simulated_balances():
+    return AsyncExecutor([], 0).balances
+import os
+import math
+import logging
+from binance.client import Client
+from binance.enums import SIDE_SELL, ORDER_TYPE_MARKET
+from dotenv import load_dotenv
+
+load_dotenv()
+
+api_key = os.getenv("BINANCE_API_KEY")
+api_secret = os.getenv("BINANCE_API_SECRET")
+client = Client(api_key, api_secret)
+
+BNB_SYMBOL = "BNBUSDT"
+MIN_NOTIONAL = 1.50  # Minimum nilai jualan dalam USDT
+LEAVE_PERCENTAGE = 0.40  # Tinggalkan 40% BNB
+
+def round_step_size(value, step_size):
+    precision = int(round(-math.log(step_size, 10), 0))
+    return round(math.floor(value / step_size) * step_size, precision)
+
+def convert_bnb_to_usdt(amount_bnb):
+    try:
+        balance = float(client.get_asset_balance(asset='BNB')['free'])
+        logging.info(f"BNB balance: {balance:.6f}")
+        if amount_bnb > balance:
+            return "? Gagal: Baki BNB tidak mencukupi."
+
+        info = client.get_symbol_info(BNB_SYMBOL)
+        lot_size = next(f for f in info['filters'] if f['filterType'] == 'LOT_SIZE')
+        step_size = float(lot_size['stepSize'])
+
+        amount_bnb = round_step_size(amount_bnb, step_size)
+        logging.info(f"Amount BNB selepas bundar: {amount_bnb}")
+
+        price = float(client.get_symbol_ticker(symbol=BNB_SYMBOL)['price'])
+        notional = amount_bnb * price
+        logging.info(f"Nilai notional jualan: {notional:.2f} USDT")
+
+        if notional < MIN_NOTIONAL:
+            return f"? Nilai jualan {notional:.2f} USDT terlalu rendah (min {MIN_NOTIONAL} USDT)"
+
+        order = client.create_order(
+            symbol=BNB_SYMBOL,
+            side=SIDE_SELL,
+            type=ORDER_TYPE_MARKET,
+            quantity=amount_bnb
+        )
+        logging.info(f"Order berjaya: {order}")
+        return f"? Berjaya jual {amount_bnb} BNB � {notional:.2f} USDT"
+
+    except Exception as e:
+        logging.error(f"Ralat semasa jual: {e}")
+        return f"? Ralat semasa jual: {str(e)}"
+
+def convert_max_bnb_to_usdt():
+    try:
+        balance = float(client.get_asset_balance(asset='BNB')['free'])
+        logging.info(f"Balance BNB sedia ada: {balance:.6f}")
+        if balance <= 0:
+            return "? Tiada baki BNB untuk ditukar."
+
+        leave_amount = balance * LEAVE_PERCENTAGE
+        amount_to_sell = balance - leave_amount
+
+        if amount_to_sell < 0.001:
+            return f"?? Jumlah boleh dijual terlalu kecil selepas simpan {LEAVE_PERCENTAGE*100:.0f}%."
+
+        return convert_bnb_to_usdt(amount_to_sell)
+
+    except Exception as e:
+        logging.error(f"Ralat semasa semak baki: {e}")
+        return f"? Ralat semasa semak baki: {str(e)}"
+# /opt/alphatango/executors/live_executor.py
+
+import logging
+from config import Config
+from alphatelegram.handlers import send_telegram_alert
+from streamers.price_streamer import get_price
+
+class LiveExecutor:
+    def __init__(self, client):
+        self.client = client
+
+    async def execute_trade(self, opportunity):
+        try:
+            symbol = opportunity['symbol']
+            quantity = opportunity['quantity']
+            
+            # Ambil harga semasa dari price_streamer
+            price = get_price(symbol)
+            if price is None:
+                msg = f"[LIVE EXECUTOR] Gagal dapatkan harga semasa untuk {symbol}"
+                logging.error(msg)
+                await send_telegram_alert(msg)
+                return
+
+            notional_value = quantity * price
+            if notional_value < Config.MIN_NOTIONAL:
+                msg = (f"[LIVE EXECUTOR] Dagangan terlalu kecil untuk {symbol}: "
+                       f"{notional_value:.2f} < {Config.MIN_NOTIONAL}")
+                logging.warning(msg)
+                await send_telegram_alert(msg)
+                return
+
+            # Log percubaan order
+            logging.info(f"[LIVE EXECUTOR] Hantar order BELI {quantity} {symbol} @ {price}")
+
+            # Hantar order sebenar (placeholder, ganti ikut API Binance sebenar anda)
+            order = await self.client.create_order(
+                symbol=symbol,
+                side="BUY",
+                type="MARKET",
+                quantity=quantity
+            )
+
+            # Semak respons order
+            logging.info(f"[LIVE EXECUTOR] Order berjaya: {order}")
+            await send_telegram_alert(f"[LIVE EXECUTOR] Order berjaya untuk {symbol}: {order}")
+
+        except Exception as e:
+            logging.exception(f"[LIVE EXECUTOR] Ralat semasa execute_trade: {e}")
+            try:
+                await send_telegram_alert(f"[LIVE EXECUTOR] Ralat: {e}")
+            except Exception as alert_err:
+                logging.error(f"[LIVE EXECUTOR] Gagal hantar alert Telegram: {alert_err}")
+import logging
+from datetime import datetime
+import random
+from typing import Tuple, List
+
+class Simulator:
+    """
+    Simulator untuk menjalankan dagangan arbitrage dalam mod simulasi.
+    """
+    def __init__(self, initial_balance: float = 1000.0):
+        self.balance = initial_balance
+        self.trade_log: List[dict] = []
+
+    def execute_trade(self, base_symbol: str, quote_symbol: str, profit: float) -> None:
+        """
+        Simulasi pelaksanaan dagangan dan kemaskini baki serta log.
+        """
+        timestamp = datetime.utcnow().isoformat()
+        self.balance += profit
+        trade = {
+            "timestamp": timestamp,
+            "pair": f"{base_symbol}/{quote_symbol}",
+            "profit": round(profit, 5),
+            "balance": round(self.balance, 2),
+        }
+        self.trade_log.append(trade)
+        logging.info(f"?? [SIMULATED ARB] {trade}")
+
+    def get_balance(self) -> float:
+        return round(self.balance, 2)
+
+    def get_log(self) -> List[dict]:
+        return self.trade_log
+
+
+async def run_simulation(initial_balance: float) -> None:
+    """
+    Fungsi ujian simulasi bebas. Tidak digunakan dalam executor utama.
+    """
+    sim = Simulator(initial_balance=initial_balance)
+    symbols = ['BTCUSDT', 'ETHUSDT', 'SOLUSDT', 'XRPUSDT']
+
+    for _ in range(3):
+        base = random.choice(symbols)
+        quote = random.choice(symbols)
+        while quote == base:
+            quote = random.choice(symbols)
+
+        profit = round(random.uniform(0.01, 5.00), 4)
+        sim.execute_trade(base, quote, profit)
+
+
+# Fungsi penting untuk digunakan dalam mode SIMULATION executor
+simulator_instance = Simulator(initial_balance=1000)
+
+async def simulate_trade_and_update_balance(opportunity: dict, balance_rm: float, balances: dict) -> Tuple[bool, float, float]:
+    """
+    Laksanakan dagangan simulasi berdasarkan peluang arbitrage.
+    """
+    try:
+        base = opportunity.get("base", "UNKNOWN")
+        quote = opportunity.get("quote", "USDT")
+        profit = opportunity.get("profit_rm", 0.0)
+
+        if profit <= 0:
+            return False, balance_rm, 0.0
+
+        simulator_instance.execute_trade(base, quote, profit)
+        new_balance = simulator_instance.get_balance()
+        balances["RM"] = new_balance  # update in-place
+
+        return True, new_balance, profit
+
+    except Exception as e:
+        logging.error(f"[SIMULATOR ERROR] {e}")
+        return False, balance_rm, 0.0
+import math
+import time
+from binance.client import Client
+from config import Config
+
+# Inisialisasi client Binance
+_client = Client(Config.BINANCE_API_KEY, Config.BINANCE_API_SECRET)
+
+# Cache untuk simbol info
+_symbol_info_cache = {}
+
+def get_symbol_info(symbol: str) -> dict:
+    """
+    Mendapatkan info simbol dari Binance dan simpan dalam cache.
+    """
+    if symbol in _symbol_info_cache:
+        return _symbol_info_cache[symbol]
+    info = _client.get_symbol_info(symbol)
+    _symbol_info_cache[symbol] = info
+    return info
+
+def round_quantity_to_step_size(quantity: float, step_size: float) -> float:
+    """
+    Membundarkan kuantiti mengikut step size yang dibenarkan oleh Binance.
+    """
+    precision = int(round(-math.log10(step_size)))
+    return round(quantity - (quantity % step_size), precision)
+
+def format_float(value: float, precision: int = 2) -> float:
+    """
+    Membundarkan nilai float ke bilangan perpuluhan tertentu.
+    Contoh: format_float(3.1415, 2) => 3.14
+    """
+    return round(float(value), precision)
+
+def get_current_timestamp() -> int:
+    """
+    Mengembalikan timestamp semasa dalam bentuk integer (epoch time dalam saat).
+    """
+    return int(time.time())

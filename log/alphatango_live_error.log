@@ -1,0 +1,3 @@
+Failed to restart alphatango.service: Transaction for alphatango.service/restart is destructive (time-set.target has 'stop' job queued, but 'start' is included in transaction).
+See system logs and 'systemctl status alphatango.service' for details.
+Warning: The unit file, source configuration file or drop-ins of alphatango.service changed on disk. Run 'systemctl daemon-reload' to reload units.
