@@ -1,30 +1,38 @@
-# Jangan upload fail config sensitif
+# 🚫 Fail config dan API sensitif
 .env
 config.py
+eligible_symbols.json
+symbol_filters.json
+purchased_coins.csv
 
-# Cache dan bytecode Python
+# ⚙️ Cache & bytecode Python
 __pycache__/
 *.py[cod]
 *.so
 
-# Fail log dan simpanan sementara
+# 🧾 Fail log dan sementara
 *.log
 *.pid
 *.tmp
 *.bak
 *.swp
 *.swo
+nohup.out
+frozen.txt
 
-# Direktori log dan PnL
+# 📁 Direktori log dan output PnL
 /log/
+logs/
 pnl_logs/
 
-# Fail editor
+# 🛠️ Fail editor dan IDE
 .vscode/
-*.idea/
+.idea/
+*.sw?
 
-# Fail sistem
+# 🖥️ Fail sistem OS
 .DS_Store
 Thumbs.db
-venv/
+
+# 🐍 Virtual environment
 venv/
