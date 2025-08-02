@@ -1,5 +1,5 @@
-python-dotenv
-ccxt
-aiohttp
-requests
-python-telegram-bot
+python-dotenv==1.0.1
+ccxt==4.2.99
+aiohttp==3.9.3
+requests==2.31.0
+python-telegram-bot==20.7
